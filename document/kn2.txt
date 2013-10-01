@@ -14,6 +14,7 @@ http://www.slideshare.net/seancribbs/riak-with-nodejs
 http://www.codedependant.net/blog/posts/20-2/handling-large-files-with-nodejs-and-elastic-searc/
 http://riak-users.197444.n3.nabble.com/Importing-data-to-Riak-td3506598.html
 http://stackoverflow.com/questions/13059953/how-do-i-make-a-faster-riak-mapreduce-query
+https://x443.wordpress.com/2012/10/15/paginating-with-riak/
 
 Spring 
 http://www.tutorialspoint.com/spring/spring_overview.htm
