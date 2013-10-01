@@ -1,0 +1,12 @@
+Multi Tenancy Rules
+List Definition
+	Import field size
+	List field size
+	tblDataType
+	tblFieldMapping
+	tblValidation
+Import/Export 
+	Table name
+
+
+sudo rm /var/lib/apt/lists/* -vf
