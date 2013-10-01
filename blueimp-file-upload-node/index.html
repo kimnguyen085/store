@@ -1,0 +1,1739 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>List Definition</title>
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<link rel="stylesheet" href="css/jquery.fileupload-ui.css" />
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/jquery.hashchange.min.js"></script>
+<script src="js/jquery.easytabs.js"></script>
+<script src="js/script.js"></script>
+
+<script src="js/vendor/jquery.ui.widget.js">
+<!-- Require for FF3 -->
+</script>
+
+<script src="js/jquery.iframe-transport.js">
+<!-- Require for FF3 -->
+</script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js">
+<!-- Require for FF3 -->
+</script>
+
+
+</head>
+
+<body class="relative">
+	<div class="wrapper relative">
+    	<div class="header">
+        	<div class="left bg-dark-blue text-center">
+            	<img src="images/logo.png" class="margintop-10" />
+            </div>
+            
+            <div class="right bg-light-blue">
+            	<span class="marginleft-20">Import Export Manager</span>
+                <div class="white-bg"></div>
+                <div class="right-logo"></div>
+            </div>
+        </div>
+        
+        <div class="header-menu">
+        	<div id="tab-container" class="tab-container">
+                <ul class='etabs'>
+                    <li class='tab first'><a href="#File-Manager">File Manager</a></li>
+                    <li class='tab'><a href="#List-Definition">List Definition</a></li>
+                    <li class='tab'><a href="#Import">Import</a></li>
+                    <li class='tab'><a href="#Export">Export</a></li>
+                    <li class='tab'><a href="#Lists">Lists</a></li>
+                    <li class='tab'><a href="#Exclusions">Exclusion</a></li>
+                    <li class='tab'><a href="#Time-Zone">Time Zone</a></li>
+                </ul>
+                <div class="panel-container">
+                	<!--File Manager-->
+                    <div id="File-Manager">
+                        <!-- content -->
+                        <div class="menu">
+                        	<div class="general-btn btn_exit">
+                            	<span> Exit </span>
+                            </div>
+                            
+                            <div id="btnupload_manager" class="general-menu first flag">
+                            	<span class="fileinput-button">
+									<span>Upload</span>
+									<input id="fileupload" type="file" name="files[]" data-url="http://localhost:8888" multiple="multiple"/>
+									</span>
+                            </div>
+                            <div id="btndownload_manager" class="general-menu flag">
+                            	<span> Download </span>
+                            </div>
+                            
+                            <div id="btnmove_manager" class="general-menu first flag">
+                            	<span> Move </span>
+                            </div>
+                            <div id="btncopy_manager" class="general-menu flag">
+                            	<span> Copy </span>
+                            </div>
+                            <div id="btnview_manager" class="general-menu flag">
+                            	<span> View </span>
+                            </div>
+                            <div id="btnedit_manager" class="general-menu flag">
+                            	<span> Edit </span>
+                            </div>
+                            <div id="btnrename_manager" class="general-menu">
+                            	<span> Rename </span>
+                            </div>
+                            <div id="btndelete_manager" class="general-menu">
+                            	<span> Delete </span>
+                            </div>
+                            
+                            <div id="btnadddir_manager" class="general-menu first flag">
+                            	<span> Add Dir </span>
+                            </div>
+                            <div id="btndeldir_manager" class="general-menu flag">
+                            	<span> Del Dir </span>
+                            </div>
+                        </div>
+
+                        <div class="margintop-10">
+                        	<div id="table" class="table border">
+                            	<div class="row bg-title">
+                                	<div class="cell btm-border default-height text-center vcenter firstcell">
+                                        <input id="checkall" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border btm-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10 bold-font color-white"> Directory </span>
+                                    </div>
+                                    <div class="cell left-border btm-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10 bold-font color-white"> File Name </span>
+                                    </div>
+                                    <div class="cell left-border btm-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10 bold-font color-white"> Size </span>
+                                    </div>
+                                    <div class="cell left-border btm-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10 bold-font color-white"> Date Modified </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 1</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 1.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 1.3 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 12/12/2012 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 2</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 2.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 2.3 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 01/03/2013 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 3</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 3.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 10.0 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 12/09/2013 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 4</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 4.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 08.3 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 12/02/2012 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 5</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 5.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 05.35 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 28/07/2013 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 6</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 6.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 58.08 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 18/08/2013 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 7</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 7.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 37.56 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 23/09/2013 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell default-height text-center vcenter firstcell">
+                                        <input name="cb1" type="checkbox" /> 
+                                    </div>
+                                    <div class="cell left-border default-height vcenter secondcell">
+                                    	<span class="marginleft-10"> Directory 8</span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter thirdcell">
+                                    	<span class="marginleft-10"> List File Name 8.txt </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fourthcell">
+                                    	<span class="marginleft-10"> 68.12 Mbytes </span>
+                                    </div>
+                                    <div class="cell left-border default-height vcenter fithcell">
+                                    	<span class="marginleft-10"> 20/02/2013 </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="progress"></div>
+                    </div>
+                    
+                    <!--List Definition-->
+                    <div id="List-Definition">
+                    	<!-- content -->
+                        <div class="menu">
+                            <div class="general-btn btn_exit">
+                                <span> Exit </span>
+                            </div>
+                            <div id="btnadd_definition" class="general-menu first flag">
+                                <span> Add </span>
+                            </div>
+                            <div id="btncopy_definition" class="general-menu flag">
+                                <span> Copy </span>
+                            </div>
+                            <div id="btnview_definition" class="general-menu flag">
+                                <span> View </span>
+                            </div>
+                            <div id="btnedit_definition" class="general-menu flag">
+                                <span> Edit </span>
+                            </div>
+                            <div id="btndelete_definition" class="general-menu">
+                                <span> Delete </span>
+                            </div>
+                        </div>
+                        
+                        <div class="margintop-10">
+                            <div class="table border">
+                                <div class="row bg-title">
+                                    <div class="cell firstcell btm-border default-height vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> Name </span>
+                                    </div>
+                                    <div class="cell left-border btm-border secondcell default-height vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> Description </span>
+                                    </div>
+                                </div>
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 1</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 2</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 3</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 4</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 5</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 6</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 7</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 8</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 9</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> Definition short name 10</span>
+                                    </div>
+                                    <div class="cell left-border secondcell default-height vcenter">
+                                        <span class="marginleft-10"> Text describing the definition files  </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--Import-->
+                    <div id="Import">
+                        <!-- content -->
+                        <div class="menu">
+                            <div id="btnexit_import" class="general-btn btn_exit">
+                                <span> Exit </span>
+                            </div>
+                            <div id="btnadd_import" class="general-menu first flag">
+                                <span> Add </span>
+                            </div>
+                            <div id="btnedit_import" class="general-menu flag">
+                                <span> Edit </span>
+                            </div>
+                            <div id="btndelete_import" class="general-menu">
+                                <span> Delete </span>
+                            </div>
+                        </div>
+                        
+                        <div id="demand_import" class="margintop-10 border">
+                        	<div class="title-import">
+                            	<span>On Demand Import</span>
+                            </div>
+                            <div class="table margintop-10 marginbtm-10 auto-margin">
+                            	<div class="row">
+                                	<div class="cell firstcell">
+                                    	<span class="marginleft-5">Directory</span>
+                                    </div>
+                                    <div class="cell secondcell">
+                                    	<span class="marginleft-5">File</span>
+                                    </div>
+                                    <div class="cell thirdcell">
+                                    	<span class="marginleft-5">List Definition</span>
+                                    </div>
+                                    <div class="cell forthcell">
+                                    	<span class="marginleft-5">List Name</span>
+                                    </div>
+                                    <div class="cell fifthcell">
+                                    	
+                                    </div>
+                                    <div class="cell sixthcell">
+                                    	<span class="marginleft-5">Status</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="cell vcenter">
+                                    	<select autocomplete="off">
+                                        	<option disabled="disabled" selected="selected">Directory</option>
+                                            <option>Directory 1</option>
+                                            <option>Directory 2</option>
+                                            <option>Directory 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<select autocomplete="off">
+                                        	<option disabled="disabled" selected="selected">File</option>
+                                            <option>File 1</option>
+                                            <option>File 2</option>
+                                            <option>File 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<select autocomplete="off">
+                                        	<option disabled="disabled" selected="selected">List Definition</option>
+                                            <option>List 1</option>
+                                            <option>List 2</option>
+                                            <option>List 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<input type="text" maxlength="10" value="List Name"  class="box-size"/>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<input type="button" class="start_btn marginleft-5" value="Start"  />
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<div id="progress_bar" class="marginleft-5 dark-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="scheduled_import" class="margintop-10 border">
+                        	<div class="title-import">
+                            	<span>Scheduled Import</span>
+                            </div>
+                            <div class="table margintop-10 marginbtm-10 auto-margin border">
+                            	<div class="row bg-title first-row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">Scheduled Days</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">Scheduled Time</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>Enabled</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 1</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 1</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 1</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 2</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 2</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 2</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 3</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 3</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 3</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 4</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 4</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 4</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	<span class="marginleft-5">Directory 5</span>
+                                    </div>
+                                    <div class="cell secondcell left-border">
+                                    	<span class="marginleft-5">List Definition 5</span>
+                                    </div>
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell left-border">
+                                    	<span class="marginleft-5">Filename 5</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="import_history" class="margintop-10 border">
+                            <div class="title-import">
+                            	<span>Import History</span>
+                            </div>
+                            <div class="table margintop-10 marginbtm-10 auto-margin border">
+                            	<div class="row bg-title first-row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Started</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>Finished</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<span class="marginleft-5">Results</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 1</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name 1</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 1</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name 1</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<div id="progress_bar_1" class="marginleft-5 marginright-5 dark-border"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 2</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name 2</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 2</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name 2</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<span class="marginleft-5">1500 records imported/12 Errors</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 3</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name 3</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 3</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name 3</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<span class="marginleft-5">1500 records imported/0 Errors</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell">
+                                    	<span class="marginleft-5">Directory 4</span>
+                                    </div>
+                                    <div class="cell secondcell left-border">
+                                    	<span class="marginleft-5">File Name 4</span>
+                                    </div>
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="marginleft-5">List Definition 4</span>
+                                    </div>
+                                    <div class="cell forthcell left-border">
+                                    	<span class="marginleft-5">List Name 4</span>
+                                    </div>
+                                    <div class="cell fifthcell left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell left-border">
+                                    	<span class="marginleft-5">1500 records imported /07 Errors</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!--Export-->
+                    <div id="Export">
+                        <!-- content -->
+                        <div class="menu">
+                            <div id="btnexit_export" class="general-btn btn_exit">
+                                <span> Exit </span>
+                            </div>
+                            <div id="btnadd_export" class="general-menu first flag">
+                                <span> Add </span>
+                            </div>
+                            <div id="btnedit_export" class="general-menu flag">
+                                <span> Edit </span>
+                            </div>
+                            <div id="btndelete_export" class="general-menu">
+                                <span> Delete </span>
+                            </div>
+                        </div>
+                        
+                        <div id="demand_import" class="margintop-10 border">
+                        	<div class="title-import">
+                            	<span>On Demand Export</span>
+                            </div>
+                            <div class="table margintop-10 marginbtm-10 auto-margin">
+                            	<div class="row">
+                                	<div class="cell firstcell">
+                                    	<span class="marginleft-5">Directory</span>
+                                    </div>
+                                    <div class="cell secondcell">
+                                    	<span class="marginleft-5">File</span>
+                                    </div>
+                                    <div class="cell thirdcell">
+                                    	<span class="marginleft-5">List Definition</span>
+                                    </div>
+                                    <div class="cell forthcell">
+                                    	<span class="marginleft-5">List Name</span>
+                                    </div>
+                                    <div class="cell fifthcell">
+                                    	
+                                    </div>
+                                    <div class="cell sixthcell">
+                                    	<span class="marginleft-5">Status</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                	<div class="cell vcenter">
+                                    	<select autocomplete="off">
+                                        	<option disabled="disabled" selected="selected">Directory</option>
+                                            <option>Directory 1</option>
+                                            <option>Directory 2</option>
+                                            <option>Directory 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<select autocomplete="off">
+                                        	<option disabled="disabled" selected="selected">File</option>
+                                            <option>File 1</option>
+                                            <option>File 2</option>
+                                            <option>File 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<select autocomplete="off">
+                                        	<option disabled="disabled" selected="selected">List Definition</option>
+                                            <option>List 1</option>
+                                            <option>List 2</option>
+                                            <option>List 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<input type="text" maxlength="10" value="List Name"  class="box-size"/>
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<input type="button" class="start_btn marginleft-5" value="Start"  />
+                                    </div>
+                                    <div class="cell vcenter">
+                                    	<div id="progress_bar_2" class="marginleft-5 dark-border"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="scheduled_import" class="margintop-10 border">
+                        	<div class="title-import">
+                            	<span>Scheduled Import</span>
+                            </div>
+                            <div class="table margintop-10 marginbtm-10 auto-margin border">
+                            	<div class="row bg-title first-row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">Scheduled Days</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">Scheduled Time</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>Enabled</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 1</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 1</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 1</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 2</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 2</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 2</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 3</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 3</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 3</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 4</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 4</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Filename 4</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	<span class="marginleft-5">Directory 5</span>
+                                    </div>
+                                    <div class="cell secondcell left-border">
+                                    	<span class="marginleft-5">List Definition 5</span>
+                                    </div>
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="marginleft-5">M T W T F S S</span>
+                                    </div>
+                                    <div class="cell forthcell left-border">
+                                    	<span class="marginleft-5">HH:MM</span>
+                                    </div>
+                                    <div class="cell fifthcell left-border">
+                                    	<span class="marginleft-5">Filename 5</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center left-border">
+                                    	<input type="checkbox"  />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="import_history" class="margintop-10 border">
+                            <div class="title-import">
+                            	<span>Export History</span>
+                            </div>
+                            <div class="table margintop-10 marginbtm-10 auto-margin border">
+                            	<div class="row bg-title first-row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">Started</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>Finished</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<span class="marginleft-5">Results</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 1</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name 1</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 1</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name 1</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<div id="progress_bar_3" class="marginleft-5 marginright-5 dark-border"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 2</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name 2</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 2</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name 2</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<span class="marginleft-5">1500 records imported/12 Errors</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="marginleft-5">Directory 3</span>
+                                    </div>
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="marginleft-5">File Name 3</span>
+                                    </div>
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="marginleft-5">List Definition 3</span>
+                                    </div>
+                                    <div class="cell forthcell btm-border left-border">
+                                    	<span class="marginleft-5">List Name 3</span>
+                                    </div>
+                                    <div class="cell fifthcell btm-border left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center btm-border left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell btm-border left-border">
+                                    	<span class="marginleft-5">1500 records imported/0 Errors</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell">
+                                    	<span class="marginleft-5">Directory 4</span>
+                                    </div>
+                                    <div class="cell secondcell left-border">
+                                    	<span class="marginleft-5">File Name 4</span>
+                                    </div>
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="marginleft-5">List Definition 4</span>
+                                    </div>
+                                    <div class="cell forthcell left-border">
+                                    	<span class="marginleft-5">List Name 4</span>
+                                    </div>
+                                    <div class="cell fifthcell left-border">
+                                    	<span class="marginleft-5">DD MM YYYY HH:MM</span>
+                                    </div>
+                                    <div class="cell sixthcell text-center left-border">
+                                    	<span>HH:MM</span>
+                                    </div>
+                                    <div class="cell seventhcell left-border">
+                                    	<span class="marginleft-5">1500 records imported /07 Errors</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Lists">
+                        <!-- content -->
+                        <div class="menu">
+                            <div id="btnexit_export" class="general-btn btn_exit">
+                                <span> Exit </span>
+                            </div>
+                            <div id="btnview_lists" class="general-menu first flag">
+                                <span> View </span>
+                            </div>
+                            <div id="btndelete_lists" class="general-menu">
+                                <span> Delete </span>
+                            </div>
+                        </div>
+                        
+                        <div id="lists" class="margintop-10">
+                            <div class="table border">
+                                <div class="row bg-title">
+                                    <div class="cell firstcell btm-border default-height vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> List Name </span>
+                                    </div>
+                                    <div class="cell left-border btm-border secondcell vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> Records </span>
+                                    </div>
+                                    <div class="cell left-border btm-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 1</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 30000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 2</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 20000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 3</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 10000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 4</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 15000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 5</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 5000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 6</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 35000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 7</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 13000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 8</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 55000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 9</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 9000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell firstcell default-height vcenter">
+                                        <span class="marginleft-10"> List Name 10</span>
+                                    </div>
+                                    <div class="cell left-border secondcell vcenter">
+                                        <span class="marginleft-10"> 26000 </span>
+                                    </div>
+                                    <div class="cell left-border thirdcell">
+                                    	
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Exclusions">
+                        <!-- content -->
+                        <div class="menu">
+                            <div class="general-btn btn_exit">
+                                    <span> Exit </span>
+                            </div>
+                            <div id="btnadd_exclusions" class="general-menu first flag">
+                                <span> Add </span>
+                            </div>
+                            <div id="btnedit_exclusions" class="general-menu flag">
+                                <span> Edit </span>
+                            </div>
+                            <div id="btndelete_exclusions" class="general-menu flag">
+                                <span> Delete </span>
+                            </div>
+                            
+                            <div id="btnimport_exclusions" class="general-menu first flag">
+                                <span> Import </span>
+                            </div>
+                            <div id="btnexport_exclusions" class="general-menu flag">
+                                <span> Export </span>
+                            </div>
+                        </div>
+                        
+                        <div id="lists" class="margintop-10">
+                            <div class="table border">
+                                <div class="row bg-title">
+                                    <div class="cell btm-border cell w-cell-exclusions default-height vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> Excluded Value</span>
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions btm-border vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> Type </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions btm-border vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> Start Date </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions btm-border vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> End Date </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions btm-border vcenter">
+                                        <span class="marginleft-10 bold-font color-white"> Modified Date </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        <span class="marginleft-10"> 0923001122</span>
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> Phone Number </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 01/01/2002 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 01/01/2013 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 01/02/2012 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        <span class="marginleft-10"> 0932144299</span>
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> Phone Number </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 02/01/2010 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 02/01/2013 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 03/02/2012 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        <span class="marginleft-10"> 9312333222</span>
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> Phone Number </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 05/02/2009 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 02/01/2016 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 08/10/2010 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        <span class="marginleft-10"> 123 456 1324 444</span>
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> Social Security Number </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 02/05/2010 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 02/06/2013 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 03/02/2011 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        <span class="marginleft-10"> 9313 422112</span>
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> Account Number </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 30/09/2002 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 13/01/2005 </span>
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        <span class="marginleft-10"> 10/02/2012 </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                       
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                       
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                       
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                       
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="cell cell w-cell-exclusions default-height vcenter">
+                                        
+                                    </div>
+                                    <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                        
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                       
+                                    </div>
+                                     <div class="cell left-border w-cell-exclusions vcenter">
+                                
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                    <div id="Time-Zone">
+                        <!-- content -->
+                        <div class="menu">
+                            <div class="general-btn btn_exit">
+                                <span> Exit </span>
+                            </div>
+                            <div id="btnadd_timezone" class="general-menu first flag">
+                                <span> Add </span>
+                            </div>
+                            <div id="btnedit_timezone" class="general-menu flag">
+                                <span> Edit </span>
+                            </div>
+                            <div id="btndelete_timezone" class="general-menu flag">
+                                <span> Delete </span>
+                            </div>
+                        </div>
+                        
+                        <div id="timezone" class="margintop-10">
+                            <div class="table border">
+                                <div class="row bg-title">
+                                	<div class="cell firstcell btm-border">
+                                    	<span class="general-title marginleft-10">Name</span>
+                                    </div>
+                                    
+                                    <div class="cell secondcell btm-border left-border">
+                                    	<span class="general-title marginleft-10">Offset</span>
+                                    </div>
+                                    
+                                    <div class="cell thirdcell btm-border left-border">
+                                    	<span class="general-title marginleft-10">Description</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	<span class="general-content-title marginleft-10">VIC</span>
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	<span class="general-content-title marginleft-10">+10:00</span>
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="general-content-title marginleft-10">Description of the time zone</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell">
+                                    	<span class="general-content-title marginleft-10">VIC 1</span>
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	<span class="general-content-title marginleft-10">+07:00</span>
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="general-content-title marginleft-10">Description of the time zone</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	<span class="general-content-title marginleft-10">VIC 2</span>
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	<span class="general-content-title marginleft-10">+05:00</span>
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="general-content-title marginleft-10">Description of the time zone</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell">
+                                    	<span class="general-content-title marginleft-10">VIC 3</span>
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	<span class="general-content-title marginleft-10">+02:00</span>
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="general-content-title marginleft-10">Description of the time zone</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	<span class="general-content-title marginleft-10">VIC 4</span>
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	<span class="general-content-title marginleft-10">+10:00</span>
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	<span class="general-content-title marginleft-10">Description of the time zone</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                	<div class="cell firstcell">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	
+                                    </div>
+                                </div>
+                                
+                                <div class="row bg-blue">
+                                	<div class="cell firstcell">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell secondcell left-border">
+                                    	
+                                    </div>
+                                    
+                                    <div class="cell thirdcell left-border">
+                                    	
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--Add, Copy, Edit content-->
+<div id="content"></div>
+<!--End of Add, Copy, Edit-->
+
+<!--View content List Definition-->
+<div id="content_view"></div>
+<!--End of View-->
+
+<!--Move content Manager-->
+<div id="content_move_manager" class="content_move_manage"></div>
+<!--End of Move-->
+
+<!--Copy, Rename, Add Dir content Manager-->
+<div id="content_copy_manager" class="content_copy_manage"></div>
+<!--End of Copy, Rename-->
+
+<!--View content Manager-->
+<div id="content_view_manager" class="content_view_manage"></div>
+<!--End of View-->
+
+<!--Edit content Manager-->
+<div id="content_edit_manager" class="content_view_manage"></div>
+<!--End of View-->
+
+<!--Add Dir content Manager-->
+<div id="content_directory_manager" class="content_directory_manage"></div>
+<!--End of Add Dir-->
+
+<!--Add, edit Scheduled Import-->
+<div id="content_add_shedule"></div>
+<!--End of Add Scheduled-->
+
+<!--Add, edit Scheduled Export-->
+<div id="content_export"></div>
+<!--End of Add Scheduled-->
+
+<!--View Lists-->
+<div id="content_view_lists"></div>
+<!--End of List-->
+
+<!--Add, Edit Exclusions-->
+<div id="content_exclusions"></div>
+<!--End of Add, Edit-->
+
+<!--Import Exclusions-->
+<div id="content_exclusions_import"></div>
+<!--End of Import-->
+
+<!--Export Exclusions-->
+<div id="content_exclusions_export"></div>
+<!--End of Export-->
+
+<!--Add, Edit Timezone-->
+<div id="content_timezone"></div>
+<!--End of Add, Edit-->
+
+<script type="text/javascript">
+	var counter=0;
+	var style='row';
+		$("#btndownload_manager").click(function(){
+			counter++;			
+			if(counter%2==0){
+				style='row';
+			}else{
+				style='row bg-blue';
+			}
+			$("#File-Manager #table").append("<div class=\""+style+"\"><div class=\"cell default-height text-center vcenter firstcell\"><input name=\"cb1\" type=\"checkbox\" />  </div><div class=\"cell left-border default-height vcenter secondcell\"><span class=\"marginleft-10\"> Directory 1</span></div><div class=\"cell left-border default-height vcenter thirdcell\"><span class=\"marginleft-10\"> List File Name 1.txt </span></div><div class=\"cell left-border default-height vcenter fourthcell\"><span class=\"marginleft-10\"> 1.3 Mbytes </span></div><div class=\"cell left-border default-height vcenter fithcell\"><span class=\"marginleft-10\"> 12/12/2012 </span> </div></div>");
+		});
+
+			$("#fileupload").fileupload({
+				  dataType:"json",	  
+				  
+				  done:function(e,data){
+					  alert('done');
+					  counter++;			
+						if(counter%2==0){
+							style='row';
+						}else{
+							style='row bg-blue';
+						}
+					  $("#File-Manager #table").append("<div class=\""+style+"\"><div class=\"cell default-height text-center vcenter firstcell\"><input name=\"cb1\" type=\"checkbox\" />  </div><div class=\"cell left-border default-height vcenter secondcell\"><span class=\"marginleft-10\"> ./tmp/</span></div><div class=\"cell left-border default-height vcenter thirdcell\"><span class=\"marginleft-10\"> File Name 1 </span></div><div class=\"cell left-border default-height vcenter fourthcell\"><span class=\"marginleft-10\"> "+parseFloat(((data.total/1024)/1024).toFixed(2))+" Mbytes </span></div><div class=\"cell left-border default-height vcenter fithcell\"><span class=\"marginleft-10\"> "+$.datepicker.formatDate('dd/mm/yy', new Date())+"</span> </div></div>");
+				  },
+				  
+				  progressall: function (e, data) {
+				        var progress = parseInt(data.loaded / data.total * 100, 10);
+				        //$('#progress .bar').append('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+				        $('#progress').html('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+				    },
+				    
+				  add: function(e,data){
+					  $('#status').html('<p id="up">Uploading ... </p>');
+					  data.submit();					  
+				  }
+		
+	});
+	
+</script>
+</body>
+</html>
