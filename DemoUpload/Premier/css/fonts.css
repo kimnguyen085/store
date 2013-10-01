@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'source_sans_prosemibold';
+    src: url('../fonts/SourceSansPro-Semibold.eot'),
+         url('../fonts/sourcesanspro-semibold.ttf') format('truetype');
+}
+
+
+@font-face {
+	font-family: 'ArialRoundedBold';
+	src: url('../fonts/Arial_Rounded_Bold.eot'),
+		url('../fonts/Arial_Rounded_Bold.ttf') format('truetype');	
+}
+
+@font-face {
+	font-family: 'LatoBold';
+	src: url('../fonts/LatoBold.eot'),
+		url('../fonts/LatoBold.ttf') format('truetype');	
+}
+
+@font-face {
+	font-family: 'ChivoRegular';
+	src: url('../fonts/ChivoRegular.eot'),
+		url('../fonts/ChivoRegular.ttf') format('truetype');	
+}

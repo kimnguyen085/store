@@ -1,0 +1,82 @@
+<div id="add_exclusion_page" class="wrapper_import_exclusion reset-border">
+    <div id="exclusion" class="auto-margin">
+    	<div class="table marginleft-10 margintop-20">          
+            <div class="row">
+            	<div class="cell default-height">
+                	<span class="marginright-10">Directory</span>
+                </div>
+				<div class="cell">
+                	<select autocomplete="off" class="w-cell-select-import">
+                    	<option disabled="disabled" selected="selected">Directory</option>
+                        <option>Directory 1</option>
+                        <option>Directory 2</option>
+                        <option>Directory 3</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+            	<div class="cell default-height">
+                	<span class="marginright-10">File Name</span>
+                </div>
+				<div class="cell">
+                	<select autocomplete="off" class="box-size w-cell-select-import">
+                    	<option selected="selected" disabled="disabled">File Name</option>
+                        <option>File Name 1</option>
+                        <option>File Name 2</option>
+                        <option>File Name 3</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+            	<div class="cell default-height-35">
+                	<span class="marginright-10">Format</span>
+                </div>
+                <div class="cell">
+                	<div class="table">
+                    	<div class="row">
+                        	<div class="cell">
+                                <input id="g1" type="radio" name="group"/>
+                                <label for="g1" class="vcenter">Delimited Text</label>
+                                <span class="marginleft-40">Delimiter</span>
+                                <input type="text" maxlength="2" class="number-width box-size"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="cell">
+                                <input id="g2" type="radio" name="group"/>
+                                <label for="g2" class="vcenter">Excel</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="cell">
+                            	<div class="margintop-10">
+                                    <div>
+                                    <input id="g3" type="checkbox" />
+                                    <label for="g3" class="vcenter">Ignore Header Row on Import</label>
+                                    </div>
+                                
+                                    <div class="margintop-3">
+                                    <input id="g4" type="checkbox" />
+                                    <label for="g4">Ignore Footer Record on Import</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    	<!--Button-->
+        <div class="margintop-10 relative">       
+            <div class="auto-margin floatright marginright-7 marginbtm-5">
+            	<input type="button" value="Import" class="general-button-dialog font-15" />
+                <input type="button" value="Cancel" class="general-button-dialog marginleft-5 font-15" onclick="closeTab()"/>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
