@@ -18,6 +18,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <![endif]-->
 <meta charset="utf-8">
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/jquery-ui.css" />
 <title>jQuery File Upload Demo</title>
 
 <noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
@@ -33,15 +35,25 @@
 <!--     </div> -->
 <!--     <input type="file" name="files[]" /> -->
 <!--     <input id="but" type="submit" value="upload"/> -->
-<!-- </form> -->
-
-  
-  <div id="progress">
-        <div class="bar" style="width: 0%;"></div>
-    </div>
+<!-- </form> -->  
 
 <p id="test">TESTING JQUERY</p>
-<input type="button" id="but" value="My Button"/>
+
+<input id="fileupload" type="file" name="files[]" data-url="http://localhost:8888" multiple="multiple"/>
+
+<div style="width: 50%">
+<div id="progress_bar" class="marginleft-5 dark-border ui-progressbar" role="progressbar">
+<div id="pbvalue" class="ui-progressbar-value ui-widget-header" style="width: 0%;">
+<div id="txtvalue" style="color:red;text-align: center">0%</div>
+</div>
+</div>
+</div>
+
+<input type="button" id="but" value="Import"/>
+ <div id="progress">
+        <div class="bar" style="width: 0%;"></div>
+ </div>
+
 <div id="status"></div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js">
@@ -63,6 +75,7 @@
 </script>
 
 <script type="text/javascript">
+
 var started=0;
 
 	$("#but").click(function(){			
@@ -87,9 +100,8 @@ function getresponse(){
 // 			$("#progress").html('<p id="up">Loading ... </p>');
 		},
         success: function(data) {
-//	            alert(data.success);
-			if(data.success==="false")
-				alert('false');
+// 			if(data.success==="false")
+// 				alert('false');
 			if(data.success==="true")
 			{
 				$("#progress").html('<p id="up">Complete </p>');
@@ -114,6 +126,38 @@ function startRetrieve(){
 		getresponse();
 	}
 };
+
+$("#fileupload").fileupload({
+	  dataType:"json",	  
+	  
+	  done:function(e,data){
+		  alert('done');
+		  counter++;			
+			if(counter%2==0){
+				style='row';
+			}else{
+				style='row bg-blue';
+			}
+		  $("#File-Manager #table").append("<div class=\""+style+"\"><div class=\"cell default-height text-center vcenter firstcell\"><input name=\"cb1\" type=\"checkbox\" />  </div><div class=\"cell left-border default-height vcenter secondcell\"><span class=\"marginleft-10\"> ./tmp/</span></div><div class=\"cell left-border default-height vcenter thirdcell\"><span class=\"marginleft-10\"> File Name 1 </span></div><div class=\"cell left-border default-height vcenter fourthcell\"><span class=\"marginleft-10\"> "+parseFloat(((data.total/1024)/1024).toFixed(2))+" Mbytes </span></div><div class=\"cell left-border default-height vcenter fithcell\"><span class=\"marginleft-10\"> "+$.datepicker.formatDate('dd/mm/yy', new Date())+"</span> </div></div>");
+	  },
+	  
+	  progressall: function (e, data) {
+	        var progress = parseInt(data.loaded / data.total * 100, 10);
+	        //$('#progress .bar').append('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+// 	        $('#progress').html('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+
+	        $("#progress_bar #pbvalue").attr( "style", function() {
+				  return "width: "+progress+"%";
+				});
+			$("#progress_bar #txtvalue").text(progress+'%');
+	    },
+	    
+	  add: function(e,data){
+		  //$('#status').html('<p id="up">Uploading ... </p>');
+		  data.submit();					  
+	  }
+
+});
 
 // function s4() {
 // 	  return Math.floor((1 + Math.random()) * 0x10000)
