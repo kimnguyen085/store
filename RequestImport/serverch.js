@@ -337,20 +337,22 @@
 	        res.end();
 	    }); 
     });
-    
+    var status="false";
     app.post('/import',function(req,res){
     	var imprt=require('./demoxl.js');
     	var files=['myfile.xlsx'];
 //    	imprt.importdata(files);
     	console.log("receive");
-    	
-    	setTimeout(function(){
-    		res.writeHead(200, {'Content-Type': 'application/json'});
-        	res.end("{\"success\":\"true\"}");
-        }, 600000);
-    	
+    	    	
+    	res.writeHead(200, {'Content-Type': 'application/json'});
+    	res.end("{\"success\":\""+status+"\"}");
 //    	console.log(res);    	
 //        res.end('_testcb(\'{"message": "Hello world!"}\')');
+    });
+    
+    app.get('/reset',function(req,res){
+    	status="false";
+    	changestt();
     });
     
     app.post('/',serve);
@@ -369,5 +371,11 @@
 //        require('http').createServer(serve).listen(port);
   
 console.log('Server running at http://127.0.0.1:'+ port);  
+function changestt(){	
+	setTimeout(function(){
+		status="true";	
+    }, 20000);
+};
+changestt();
 //}
 }(8888));

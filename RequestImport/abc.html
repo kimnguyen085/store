@@ -63,44 +63,67 @@
 </script>
 
 <script type="text/javascript">
-	$("#but").click(function(){
+var started=0;
+
+	$("#but").click(function(){			
+		if(started===0){
+			started=1;
+			startRetrieve();			
+			$("#progress").html('<p id="up">Loading ... </p>');
+		}
 		
-		$.ajax({			
-	        url: "http://localhost:8888/import",
-	        method:"POST",
-	        data: '{"data": "TEST"}',
-// 	        dataType: "jsonp",
-// 	        jsonpCallback: "_testcb",
-	        cache: false,
-// 	        timeout: 5000,	
-			beforeSend: function(){
-				$("#progress").html('<p id="up">Loading ... </p>');
-			},
-	        success: function(data) {
-// 	            alert(data.success);
-	        },
-	        error: function(jqXHR, textStatus, errorThrown) {
-	            alert('error ' + textStatus + " " + errorThrown);
-	        }
-	    }).done(function(msg){
-	    	$("#progress").html('<p id="up">Complete </p>');
-	    })
-	    ;
 	});
-// 	function testajax(){	
-// 		var ss={};
-// 		ss['example']='asdjfdasf';	
-// 		$.ajax({					
-			
-			
-// 			  type: "POST",
-// 			  url: "http://localhost:8888/import",
-// 			  data: ss,
-// 			  datatype: 'json';
-// 			})
-// 			.done(function( msg ) {
-// 			    alert( "Data Saved: " + msg );
-// 			});
+function getresponse(){
+	
+	$.ajax({			
+        url: "http://localhost:8888/import",		
+        method:"POST",
+        data: '{"data": "TEST"}',
+//	        dataType: "jsonp",
+//	        jsonpCallback: "_testcb",
+        cache: false,
+        timeout: 10000,	
+		beforeSend: function(){
+// 			$("#progress").html('<p id="up">Loading ... </p>');
+		},
+        success: function(data) {
+//	            alert(data.success);
+			if(data.success==="false")
+				alert('false');
+			if(data.success==="true")
+			{
+				$("#progress").html('<p id="up">Complete </p>');
+				started=0;
+			}
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert('error ' + textStatus + " " + errorThrown);
+        }
+    }).done(function(msg){
+    		
+    });
+};
+
+function startRetrieve(){
+	if(started===1)
+	{
+		setTimeout(function(){
+			startRetrieve();
+	    }, 3000);
+	
+		getresponse();
+	}
+};
+
+// function s4() {
+// 	  return Math.floor((1 + Math.random()) * 0x10000)
+// 	             .toString(16)
+// 	             .substring(1);
+// 	};
+
+// 	function guid() {
+// 	  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+// 	         s4() + '-' + s4() + s4() + s4();
 // 	};
 </script>
 </body> 
