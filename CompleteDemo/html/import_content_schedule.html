@@ -1,0 +1,200 @@
+<div id="add_schedule_page" class="wrapper_add_schedule reset-border">
+    <div class="auto-margin">
+    	<div class="table marginleft-10 margintop-5">
+        	<div class="row">
+            	<div class="cell default-height">
+                	<span>Enabled</span>
+                </div>
+                <div class="cell">
+                	<input type="checkbox" class="reset-padding reset-margin" />
+                </div>
+            </div>
+            
+            <div class="row">
+            	<div class="cell default-height">
+                	<span class="marginright-10">Import Directory</span>
+                </div>
+				<div class="cell">
+                	<select autocomplete="off" class="w-cell-import box-size">
+                    	<option selected="selected" disabled="disabled">Directory</option>
+                        <option>Directory 1</option>
+                        <option>Directory 2</option>
+                        <option>Directory 3</option>
+                        <option>Directory 4</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+            	<div class="cell default-height">
+                	<span>List Definition</span>
+                </div>
+				<div class="cell">
+                	<select autocomplete="off" class="box-size w-cell-import">
+                    	<option selected="selected" disabled="disabled">List Definition</option>
+                        <option>List Definition 1</option>
+                        <option>List Definition 2</option>
+                        <option>List Definition 3</option>
+                        <option>List Definition 4</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row">
+            	<div class="cell topcenter">
+                	<div class="margintop-10">
+                		<span>Schedule</span>
+                	</div>
+                </div>
+				<div class="cell">
+                	<div class="table w-table-time margintop-5 marginbtm-10">
+                    	<div class="row">
+                        	<div class="cell text-center">
+                            	<label for="2">Mon</label>
+                            </div>
+                            <div class="cell text-center">
+                            	<label for="3">Tue</label>
+                            </div>
+                            <div class="cell text-center">
+                            	<label for="4">Wed</label>
+                            </div>
+                            <div class="cell text-center">
+                            	<label for="5">Thu</label>
+                            </div>
+                            <div class="cell text-center">
+                            	<label for="6">Fri</label>
+                            </div>
+                            <div class="cell text-center">
+                            	<label for="7">Sat</label>
+                            </div>
+                            <div class="cell text-center">
+                            	<label for="8">Sun</label>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                        	<div class="cell text-center">
+                            	<input id="2" type="checkbox" />
+                            </div>
+                            <div class="cell text-center">
+                            	<input id="3" type="checkbox" />
+                            </div>
+                            <div class="cell text-center">
+                            	<input id="4" type="checkbox" />
+                            </div>
+                            <div class="cell text-center">
+                            	<input id="5" type="checkbox" />
+                            </div>
+                            <div class="cell text-center">
+                            	<input id="6" type="checkbox" />
+                            </div>
+                            <div class="cell text-center">
+                            	<input id="7" type="checkbox" />
+                            </div>
+                            <div class="cell text-center">
+                            	<input id="8" type="checkbox" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="table">
+                    	<div class="row">
+                        	<div class="cell default-height">
+                            	<input id="b1" type="radio" name="group"/>
+                            </div>
+                            <div class="cell">
+                                <label for="b1">Single Import at</label>
+                            </div>
+                            <div class="cell">
+                                <select autocomplete="off" class="box-size marginleft-10 w-cell-time">
+                                	<option selected="selected" disabled="disabled">Time</option>
+                                    <option>Time 1</option>
+                                    <option>Time 2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                        	<div class="cell default-height">
+                            	<input id="a1" type="radio" name="group"/>
+                            </div>
+                            <div class="cell">
+                                <label for="a1">Repeat every</label>
+                            </div>
+                            <div class="cell">
+                                <input type="text" value="5" maxlength="2" class="box-size w-cell-input-time"/>
+                                <span class="marginleft-5">mins</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="table">
+                    	<div class="row">
+                        	<div class="cell default-height">
+                            	<span>From</span>
+                            </div>
+                            <div class="cell">
+                            	<select autocomplete="off" class="box-size marginleft-5 w-cell-time">
+                                	<option selected="selected" disabled="disabled">Time</option>
+                                    <option>Time 1</option>
+                                    <option>Time 2</option>
+                                </select>
+                            </div>
+                            <div class="cell">
+                            	<span class="marginleft-10">To</span>
+                            </div>
+                            <div class="cell">
+                            	<select autocomplete="off" class="box-size marginleft-5 w-cell-time">
+                                	<option selected="selected" disabled="disabled">Time</option>
+                                    <option>Time 1</option>
+                                    <option>Time 2</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+            	<div class="cell default-height">
+                	<span>List Name</span>
+                </div>
+				<div class="cell">
+                	<input type="text" value="List Name" class="box-size w-cell-import"/>
+                </div>
+            </div>
+            
+            <div class="row">
+            	<div class="cell"></div>
+                <div class="cell">
+                	<div class="table">
+                    	<div class="row">
+                        	<div class="cell default-height-25">
+                            	<input id="g1" type="radio" name="group1" />
+                            </div>
+                            <div class="cell">
+                            	<label for="g1"> Create new List </label>
+                            </div>
+                            
+                            <div class="cell">
+                            	<input id="g2" type="radio" name="group1" class="marginleft-20"/>
+                            </div>
+                            <div class="cell">
+                            	<label for="g2"> Append to Existing </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    	<!--Button-->
+        <div class="margintop-10 relative">       
+            <div class="auto-margin floatright marginright-7 marginbtm-5">
+            	<input type="button" value="Save" class="general-button-dialog font-15" />
+                <input type="button" value="Cancel" class="general-button-dialog marginleft-5 font-15" onclick="closeTab()"/>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+

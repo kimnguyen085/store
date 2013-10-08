@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<!--
+/*
+ * jQuery File Upload Plugin Demo 8.8.3
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="en">
+<head>
+<!-- Force latest IE rendering engine or ChromeFrame if installed -->
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<link rel="stylesheet" href="css/jquery.fileupload-ui.css" />
+
+
+<title>jQuery File Upload Demo</title>
+
+<noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
+</head>
+<body class="relative">
+<div class="wrapper relative">
+    	<div class="header">
+        	<div class="left bg-dark-blue text-center">
+            	<img src="images/logo.png" class="margintop-10" />
+            </div>
+            
+            <div class="right bg-light-blue">
+            	<span class="marginleft-20">Import Export Manager</span>
+                <div class="white-bg"></div>
+                <div class="right-logo"></div>
+            </div>
+        </div>
+
+						<div class="header-menu"> 
+
+						<div class="menu">
+                            <div class="general-btn btn_exit">
+                                <span class="fileinput-button">
+									<span>Upload</span>
+									<input id="fileupload" type="file" name="files[]" data-url="http://localhost:8888" multiple="multiple"/>
+								</span>
+                            </div>
+                            <div id="but" class="general-menu first flag">
+                                <span> Import   </span>
+                            </div>
+                            <div id="view" class="general-menu flag">
+                                <span> View </span>
+                            </div>
+                            <div id="nxt" class="general-menu flag">
+                                <span> Next </span>
+                            </div>
+                            
+                        </div>
+                        
+<div id="demand_import" class="margintop-10 border">
+                        	<div class="title-import">
+                            	<span>On Demand Import</span>
+                            </div>
+                            <div class="table margintop-10 marginbtm-10 auto-margin">
+                            	<div class="row">
+                                	<div class="cell firstcell">
+                                    	<span class="marginleft-20">Status</span>
+                                    </div>
+                                    <div class="cell secondcell">
+                                    	<div style="width: 100%">
+										<div id="progress_bar" class="dark-border ui-progressbar" role="progressbar">
+										<div id="pbvalue" class="ui-progressbar-value ui-widget-header" style="width: 0%;">
+										<div id="txtvalue" style="color:red;text-align: center">0%</div>
+										</div>
+										</div>
+										</div>
+                                    </div>
+                                    <div class="cell thirdcell">
+                                    	<b class="marginleft-10">File Name: </b>
+                                    	<span id="filename" class="marginleft-10"> File Name</span>
+                                    </div>
+                                    <div class="cell forthcell">
+                                    	<span id="progress" class="marginbtm-10"></span>
+                                    </div>
+                                </div>
+                                                                
+</div>
+</div>                                                              
+
+
+<div>
+
+</div>
+
+
+
+<div id="content">
+	<table id="tb-content" border="1" style="width: 100%">
+	
+	</table>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js">
+<!-- Require for FF3 -->
+</script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="js/vendor/jquery.ui.widget.js">
+<!-- Require for FF3 -->
+</script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+
+
+<script src="js/jquery.iframe-transport.js">
+<!-- Require for FF3 -->
+</script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js">
+<!-- Require for FF3 -->
+</script>
+
+<script type="text/javascript" src="js/application.js"></script>
+
+</div>
+</div>
+</div>
+</body> 
+</html>

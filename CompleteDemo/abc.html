@@ -1,0 +1,333 @@
+<!DOCTYPE HTML>
+<!--
+/*
+ * jQuery File Upload Plugin Demo 8.8.3
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2010, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+-->
+<html lang="en">
+<head>
+<!-- Force latest IE rendering engine or ChromeFrame if installed -->
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="css/jquery-ui.css" />
+<title>jQuery File Upload Demo</title>
+
+<noscript><link rel="stylesheet" href="css/jquery.fileupload-ui-noscript.css"></noscript>
+</head>
+<body>
+
+<!-- <label>Example: <input id="example" type="text" name="example2"></label> -->
+<!-- <input id="fileupload" type="file" name="files[]" data-url="http://localhost:8888" multiple="multiple"/> -->
+<!--   <form id="myform" action="http://localhost:8888" method="POST" enctype="multipart/form-data"> -->
+<!--     	<input type="hidden" name="example1" value="test"> -->
+<!--     <div class="row"> -->
+<!--         <label>Example: <input id="example" type="text" name="example2"></label> -->
+<!--     </div> -->
+<!--     <input type="file" name="files[]" /> -->
+<!--     <input id="but" type="submit" value="upload"/> -->
+<!-- </form> -->  
+
+<p id="test">TESTING JQUERY</p>
+
+<input id="fileupload" type="file" name="files[]" data-url="http://localhost:8888" multiple="multiple"/>
+
+<div style="width: 50%">
+<div id="progress_bar" class="marginleft-5 dark-border ui-progressbar" role="progressbar">
+<div id="pbvalue" class="ui-progressbar-value ui-widget-header" style="width: 0%;">
+<div id="txtvalue" style="color:red;text-align: center">0%</div>
+</div>
+</div>
+</div>
+
+<div id="filename">filename</div>
+
+<input type="button" id="but" value="Import"/>
+ <div id="progress">
+        <div class="bar" style="width: 0%;"></div>
+ </div>
+
+<div id="status"></div>
+
+<input type="button" id="view" value="View"/>
+<div id="content">
+	<table id="tb-content" border="1" style="width: 100%">
+	
+	</table>
+</div>
+
+<input type="button" id="nxt" value="Next"/>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js">
+<!-- Require for FF3 -->
+</script>
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="js/vendor/jquery.ui.widget.js">
+<!-- Require for FF3 -->
+</script>
+<!-- The Templates plugin is included to render the upload/download listings -->
+
+
+<script src="js/jquery.iframe-transport.js">
+<!-- Require for FF3 -->
+</script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js">
+<!-- Require for FF3 -->
+</script>
+
+<script type="text/javascript">
+var started=0;
+var startpos=0;
+
+$("#nxt").click(function(){		
+	var ss={};
+	startpos+=5;
+	ss['start']=startpos;				
+	$.ajax({			
+	    url: "http://localhost:8888/view",	
+	    dataType: 'json',	   
+	    data: ss,
+	    method:"POST",
+	    cache: false,
+	    timeout: 3000,	
+	    success: function(data) {		    	
+	    	var tmphtml="";
+	    	for(var i=0;i<data.length;i++){
+	    		tmp=jQuery.parseJSON(data[i]);	    
+	    		tmphtml+='<tr class=\"row bg-blue\">';
+	    		$.each(tmp, function(index, value) { 	    	
+	  			  $.each(value,function(ix,val){
+	  				tmphtml+='<td>'+val+'</td>';
+	  			  });
+	    		});
+	    		tmphtml+='</tr>';
+				
+	    		if(i+1==data.length){
+	    			$("#content #tb-content tbody").html(tmphtml);
+	    		}
+	    	}									
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        alert('view error ' + textStatus + " " + errorThrown);
+	    
+	    }
+	});
+});
+
+$("#view").click(function(){		
+	var ss={};
+	startpos=0;
+	ss['start']=startpos;				
+	$.ajax({			
+	    url: "http://localhost:8888/view",	
+	    dataType: 'json',	   
+	    data: ss,
+	    method:"POST",
+	    cache: false,
+	    timeout: 3000,	
+	    success: function(data) {		    	
+	    	var tmphtml="";
+	    	for(var i=0;i<data.length;i++){
+	    		tmp=jQuery.parseJSON(data[i]);	    
+	    		tmphtml+='<tr class=\"row bg-blue\">';
+	    		$.each(tmp, function(index, value) { 	    	
+	  			  $.each(value,function(ix,val){
+	  				tmphtml+='<td>'+val+'</td>';
+	  			  });
+	    		});
+	    		tmphtml+='</tr>';
+				
+	    		if(i+1==data.length){
+	    			$("#content #tb-content tbody").html(tmphtml);
+	    		}
+	    	}									
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        alert('view error ' + textStatus + " " + errorThrown);
+	    
+	    }
+	});
+});
+
+$("#but").click(function(){		
+
+	//TEST AJAX
+// 	$.ajax({			
+// 	    url: "http://localhost:8888/reset",		
+// 	    method:"POST",
+	   
+// 	    cache: false,
+// 	    timeout: 3000,	
+// 	    success: function(data) {
+// 			alert(data);
+// 			$.each(data, function(index, value) { 
+// 			  $.each(value,function(ix,val){
+// 				  alert(ix+' '+val);
+// 			  });
+			  		
+// 		});
+		
+// 	    },
+// 	    error: function(jqXHR, textStatus, errorThrown) {
+// 	        alert('error ' + textStatus + " " + errorThrown);
+// 	    }
+// 	});
+	
+	if($("#filename").text()!=='filename'){		
+		if(started===0){
+			started=1;
+			getresponse();			
+			$("#progress").html('<p id="up">Loading ... </p>');
+		}
+	}
+
+});
+
+function getHeader(){
+	$.ajax({			
+	    url: "http://localhost:8888/header",		
+	    method:"POST",
+	    cache: false,
+	    timeout: 3000,	
+	    success: function(data) {	
+	    	
+			var array = data.toString().split(",");
+			var tmphtml="";
+			tmphtml+='<thead><tr class=\"row bg-title\">';
+			$.each(array,function(i){				   
+				   tmphtml+='<td>'+array[i]+'</td>';
+					if(i+1===array.length){
+						tmphtml+='</tr></thead><tbody></tbody>';
+						$("#content #tb-content").html(tmphtml);
+					}
+				});							
+			
+			
+			
+			
+// 			for(var i=0;i<n.length;i++){
+// 		        $('#myDiv').append("<div>arr["+i+"] =>"+n[i]+"</div>");
+// 		    }
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        alert('status error ' + textStatus + " " + errorThrown);
+	        started=0;
+	    }
+	});
+};
+
+function checkStatus(){
+	$.ajax({			
+	    url: "http://localhost:8888/status",		
+	    method:"POST",
+	    cache: false,
+	    timeout: 3000,	
+	    success: function(data) {
+			if(data.success==="true")
+			{
+				$("#progress").html('<p id="up">Complete </p>');
+				started=0;
+				getHeader();
+			}else if(data.success==="false"){
+				startRetrieve();
+			}else{
+				$("#progress").html('<p id="up">Error </p>');
+				started=0;
+				
+			}
+	    },
+	    error: function(jqXHR, textStatus, errorThrown) {
+	        alert('status error ' + textStatus + " " + errorThrown);
+	        started=0;
+	    }
+	});
+};
+
+function getresponse(){
+
+$.ajax({			
+    url: "http://localhost:8888/import",		
+    method:"POST",
+
+    cache: false,
+    timeout: 3000,	
+	beforeSend: function(){
+//			$("#progress").html('<p id="up">Loading ... </p>');
+		SendDirectory($("#filename").text());	
+	},
+
+    error: function(jqXHR, textStatus, errorThrown) {
+        alert('get response error ' + textStatus + " " + errorThrown);
+        started=0;
+    }
+}).done(function(msg){
+	startRetrieve();	
+});
+};
+
+function startRetrieve(){
+if(started===1)
+{
+	setTimeout(function(){
+		checkStatus();
+    }, 5000);
+
+	
+}
+};
+
+function SendDirectory(txt){
+var ss={};
+ss['directory']=txt;	
+$.ajax({	
+	dataType: 'json',
+    url: "http://localhost:8888/setDirectory",		
+    method:"POST",
+    data: ss,	        
+});
+};
+
+$("#fileupload").fileupload({
+	  dataType:"json",	  
+	  
+	  done:function(e,data){
+
+		var tmp=data.originalFiles;		
+		  $.each(tmp, function(index, value) { 
+			  $("#filename").text(value.name);
+			  		
+		});
+
+	  },
+	  
+	  progressall: function (e, data) {
+	        var progress = parseInt(data.loaded / data.total * 100, 10);
+	        //$('#progress .bar').append('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+// 	        $('#progress').html('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+
+	        $("#progress_bar #pbvalue").attr( "style", function() {
+				  return "width: "+progress+"%";
+				});
+			$("#progress_bar #txtvalue").text(progress+'%');
+	    },
+	    
+	  add: function(e,data){		  
+		  data.submit();					  
+	  }
+
+});
+
+
+</script>
+</body> 
+</html>

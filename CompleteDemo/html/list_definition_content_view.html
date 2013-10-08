@@ -1,0 +1,622 @@
+<div id="add_page" class="wrapper_add">
+    <div class="table paddingtop-10 paddingbtm-10 marginleft-20">
+        <div class="row">
+            <div class="cell">
+                <span class="marginright-10"> Name </span>
+            </div>
+            <div class="cell">
+                <input type="text" class="name-width" maxlength="20" />
+            </div>
+            <div class="cell">
+                <span class="marginright-10 marginleft-40"> Description </span>
+            </div>
+            <div class="cell">
+                <input type="text" class="desc-width" maxlength="60" />
+            </div>
+        </div>
+    </div>
+    <div class="top-border">
+        <div class="table auto-margin paddingtop-5 paddingbtm-5">
+            <div class="row">
+                <div class="cell cell-width zoom-page">
+                    <div class="default-height-25 line-height-25">
+                        <input id="g1" type="radio" name="group" class="vcenter"/>
+                        <label for="g1" class="vcenter">Fixed Length Text</label>
+                    </div>
+                    <div class="default-height-25 line-height-25">
+                        <input id="g2" type="radio" name="group" class="vcenter"/>
+                        <label for="g2" class="vcenter">Delimited Text</label>
+   
+                        
+                        <span class="marginleft-20"> Delimiter </span>
+                        <input type="text" maxlength="8" class="number-width vcenter"/>
+                    </div>
+                    <div class="default-height-25 vcenter line-height-25">
+                        <input id="g3" type="radio" name="group" class="vcenter"/>
+                        <label for="g3" class="vcenter">Excel</label>
+                    </div>
+                </div>
+                
+                <div class="cell cell-width zoom-page">
+                    <div class="default-height-25 line-height-25 marginleft-20">
+                        <input id="g4" type="checkbox" class="vcenter"/>
+                        <label for="g4" class="vcenter">Ignore Header Row on Import</label>
+                    </div>
+                    <div class="default-height-25 line-height-25 marginleft-20">
+                        <input id="g5" type="checkbox" class="vcenter"/>
+                        <label for="g5" class="vcenter">Ignore Footer Record on Import</label>
+                    </div>
+                </div>
+                
+                <div class="cell cell-width">
+                    <div class="default-height-25 line-height-25 marginleft-20">
+                        <input id="g6" type="checkbox" class="vcenter"/>
+                        <label for="g6" class="vcenter">Include Header on Export</label>
+                    </div>
+                    <div class="default-height-25 line-height-25 marginleft-20">
+                        <input id="g7" type="checkbox" class="vcenter"/>
+                        <label for="g7" class="vcenter">Include Contact Fields on Export</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="table border auto-margin">
+        <div class="row bg-title">
+            <!--Id-->
+            <div class="cell cell-id text-center vcenter btm-border">
+                 <span class="bold-font color-white">#</span>
+            </div>
+            
+            <!--Import Size-->
+            <div class="cell left-border cell-general-add vcenter btm-border">
+                <span class="marginleft-10 bold-font color-white">Import Size</span>
+            </div>
+            
+            <!--Field Name-->
+            <div class="cell left-border btm-border cell-general-add vcenter">
+                <span class="marginleft-10 bold-font color-white">Field Name</span>
+            </div>
+            
+            <!--Type-->
+            <div class="cell left-border btm-border cell-general-add vcenter">
+                <span class="marginleft-10 bold-font color-white">Type</span>
+            </div>
+            
+            <!--List Size-->
+            <div class="cell left-border btm-border cell-type-export vcenter text-center">
+                <span class="bold-font color-white">List Size</span>
+            </div>
+            
+            <!--Validation-->
+            <div class="cell left-border btm-border cell-general-add vcenter">
+                <span class="marginleft-10 bold-font color-white">Validation</span>
+            </div>
+            
+            <!--Allow Blank-->
+            <div class="cell left-border btm-border cell-general-add vcenter text-center">
+                <span class="bold-font color-white">Allow Blank</span>
+            </div>
+            
+            <!--Mapping-->
+            <div class="cell left-border btm-border cell-general-add vcenter">
+                <span class="marginleft-10 bold-font color-white">Mapping</span>
+            </div>
+            
+            <!--Export-->
+            <div class="cell left-border btm-border cell-type-export vcenter text-center">
+                <span class="bold-font color-white">Export</span>
+            </div>
+        </div>
+        
+        <!--Fake data-->
+        <div class="row bg-blue">
+            <div class="cell cell-id text-center vcenter">
+                 <span>1</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">20</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>10</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--2-->
+        <div class="row">
+            <div class="cell cell-id text-center vcenter">
+                 <span>2</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">10</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>90</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--3-->
+        <div class="row bg-blue">
+            <div class="cell cell-id text-center vcenter">
+                 <span>3</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">60</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>79</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--4-->
+        <div class="row">
+            <div class="cell cell-id text-center vcenter">
+                 <span>4</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">50</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>57</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--5-->
+        <div class="row bg-blue">
+            <div class="cell cell-id text-center vcenter">
+                 <span>5</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">30</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>36</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--6-->
+        <div class="row">
+            <div class="cell cell-id text-center vcenter">
+                 <span>6</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">10</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>28</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--7-->
+        <div class="row bg-blue">
+            <div class="cell cell-id text-center vcenter">
+                 <span>7</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">90</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>10</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--8-->
+        <div class="row">
+            <div class="cell cell-id text-center vcenter">
+                 <span>8</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">70</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>40</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--9-->
+        <div class="row bg-blue">
+            <div class="cell cell-id text-center vcenter">
+                 <span>9</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">05</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>60</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+        
+        <!--10-->
+        <div class="row">
+            <div class="cell cell-id text-center vcenter">
+                 <span>10</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">60</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <span class="marginleft-10">Surname</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>String</option>
+                    <option>Number</option>
+                    <option>Varchar</option>
+                    <option>Nvarchar</option>
+                </select>
+            </div>
+            
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <span>25</span>
+            </div>
+            
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Text</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter text-center">
+                <input type="checkbox" />
+            </div>
+
+            <div class="cell left-border cell-general-add vcenter">
+                <select class="cell-select-add marginleft-10">
+                    <option>Firstname</option>
+                    <option>Surname</option>
+                    <option>Lastname</option>
+                </select>
+            </div>
+
+            <div class="cell left-border cell-type-export vcenter text-center">
+                <input type="checkbox" />
+            </div>
+        </div>
+    </div>
+    <!--End Fake Data-->
+    
+    <!--Button-->
+    <div class="margintop-10 relative marginbtm-10">
+        <div class="right-text marginright-28">
+            <input type="button" value="Cancel" class="general-button-dialog marginleft-5" onclick="closeTab()"/>
+        </div>
+    </div>
+</div>
+
