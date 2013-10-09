@@ -352,7 +352,7 @@
     	console.log("receive import command");
     	    	
     	res.writeHead(200, {'Content-Type': 'application/json'});
-    	res.end("{\"whatever\":\""+status+"\"}");
+    	res.end("{\"success\":\""+status+"\"}");
 
     });
     

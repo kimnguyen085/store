@@ -134,7 +134,7 @@ function getHeader(){
 // 		    }
 	    },
 	    error: function(jqXHR, textStatus, errorThrown) {
-	        alert('status error ' + textStatus + " " + errorThrown);
+	        alert('header error ' + textStatus + " " + errorThrown);
 	        started=0;
 	    }
 	});
@@ -160,9 +160,15 @@ function checkStatus(){
 				
 			}
 	    },
-	    error: function(jqXHR, textStatus, errorThrown) {
-	        alert('status error ' + textStatus + " " + errorThrown);
-	        started=0;
+	    error: function(jqXHR, textStatus, errorThrown) {	        
+	    	if(textStatus==='timeout'){
+	    		setTimeout(function(){
+	    			checkStatus();
+	    	    }, 10000);
+	    	}else{
+	    		alert('status error ' + textStatus + " " + errorThrown);
+		        started=0;
+	    	}
 	    }
 	});
 };

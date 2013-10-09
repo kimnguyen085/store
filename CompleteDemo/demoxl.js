@@ -50,7 +50,7 @@ exports.importdata = function(files,callback){
 							}
 						}
 					});
-					console.log(datarow);
+//					console.log(datarow);
 					if(datarow.length!==0){				
 						
 						var indexByID = datarow[headerpp.indexOf("ID")].ID;
@@ -63,7 +63,7 @@ exports.importdata = function(files,callback){
 							console.log('Added '+indexByID+' : '+JSON.stringify(datarow));
 							
 							if(sheet.rows.indexOf(row)+1===sheet.rows.length){
-								console.log('  -----------------------FINAL ');
+//								console.log('  -----------------------FINAL ');
 								callback(null,"true",headerpp);
 							}
 							}
