@@ -24,6 +24,7 @@ http://www.howtogeek.com/66214/how-to-forward-ports-on-your-router/
 http://stackoverflow.com/questions/11692499/how-to-turn-our-pc-to-a-webserver-that-uses-tomcat
 http://www.techrepublic.com/article/make-your-home-pcs-accessible-anywhere-with-dynamic-dns-for-free/
 
+http://forum.htvsite.com/threads/83-Home-Server-Huong-dan-cai-dat-may-chu-server-tu-chinh-may-ban-va-ADSL-nha-ban
 
 Mình xin giải thích lại cho bạn để bạn hiểu rõ hơn . Tốc độ download được tính như sau (đây là cách tính chung trên toàn thế giới chứ không phải chỉ riêng ở VinaHost bạn nhé ) :
 
