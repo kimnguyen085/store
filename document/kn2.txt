@@ -23,3 +23,16 @@ http://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/
 http://www.howtogeek.com/66214/how-to-forward-ports-on-your-router/
 http://stackoverflow.com/questions/11692499/how-to-turn-our-pc-to-a-webserver-that-uses-tomcat
 http://www.techrepublic.com/article/make-your-home-pcs-accessible-anywhere-with-dynamic-dns-for-free/
+
+
+Mình xin giải thích lại cho bạn để bạn hiểu rõ hơn . Tốc độ download được tính như sau (đây là cách tính chung trên toàn thế giới chứ không phải chỉ riêng ở VinaHost bạn nhé ) :
+
+Đối với các nhà cung cấp dịch vụ mạng : 5Mbps = 5 Mega bit per second (tính bằng đơn vị bit )
+Trong khi đó trên máy tính : 5Mbps = 5 Mega byte per second (tính bằng đơn vị byte - 1 byte = 8bits )
+=> Nếu trên hợp đồng của bạn là 5Mbps => trên máy tính bạn sẽ download tối đa được 5/8 = 0.625 Mbps tương đương với 625Kb/s của IDM.
+Việc VinaHost nói bạn download bằng IDM được 1MB/s đồng nghĩa lúc này bạn đã có băng thông 1*8 = 8Mbps nếu tính theo đơn vị của hợp đồng.
+
+Thứ 2 : Việc download bạn nói chỉ tầm khoảng 400Kb - 500Kb (đồng nghĩa theo hợp đồng là 3.2Mbps đến 4Mbps) cũng không phải là con số quá thấp . Và việc download còn tùy thuộc vào nhiều yếu tố sau nữa :
+- Số lượng người đang sử dụng đường truyền của bạn lúc này (ví dụ có 2 người đang sử dụng đường truyền của bạn , và mỗi người ược 400KB thì tổng băng thông bạn đang sử dụng chắc chắn > 5Mbps của hợp đồng).
+- Nếu như vào thời điểm đó chỉ có 1 người sử dụng thì còn tùy thuộc vào kết nối internet của người sử dụng đó . Nếu như người đó sử dụng dịch vụ ADSL gói 3Mbps => tốc độ download tối đa họ đạt được chỉ vào khoảng 400Kb/s . Vì thế dù server có băng thông là 100Mbps đi chăng nữa thì họ cũng chỉ download được tối đa 400Kb/s thôi (việc này tương tự như bạn có 2 ống dẫn nước , 1 ống nhỏ nối vào 1 ống to thì lượng nước chảy tối đa bạn nhận được là của ống nhỏ).
+
