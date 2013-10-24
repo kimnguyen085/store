@@ -1,0 +1,3563 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Premier-Bootstrap v1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-theme.css" rel="stylesheet">
+<link href="css/datepicker.css" rel="stylesheet">
+<link href="css/fixedjquery.fileupload.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="assets/js/html5shiv.js"></script>
+  <script src="assets/js/respond.min.js"></script>
+<![endif]-->
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-1.10.2-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.bootpag.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/script.js"></script>
+<script src="js/jquery.ui.widget.js"></script>
+<script src="js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="js/jquery.fileupload.js"></script>
+<script src="js/moment.js"></script>
+<script type="text/javascript">
+	var optionsAsString = "";	
+	var datatbl=[];
+	var recordEachPage=5;	
+</script>
+</head>
+
+<body>
+
+<div class="wrapper">
+	<div class="container">
+        <!--Banner-->
+        <nav class="nav navbar-inverse">
+        	<form class="form-inline" role="form">
+            	<div class="pull-left">
+                    <div class="form-group">
+                        <img src="image/logo.png" class="img-responsive adjust-h-img" />
+                    </div>
+                    <div class="form-group adjust-h-title">
+                        <span class="color-w font-16">Import Export Manager</span>
+                    </div>
+                </div>
+                <div class="pull-right adjust-h-form">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="checkbox">
+                        <label class="color-w">
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                	<button type="submit" class="btn btn-default">Sign in</button>
+                </div>
+            </form>
+        </nav>
+        <!---->
+    
+        <!--Content-->
+        <div class="content">
+            <ul id="tabs" class="nav nav-tabs">
+              <li class="active"><a href="#FileManager" data-toggle="tab">File Manager</a></li>
+              <li><a href="#ListDefinition" data-toggle="tab">List Definition</a></li>
+              <li><a href="#Import" data-toggle="tab">Import</a></li>
+              <li><a href="#Export" data-toggle="tab">Export</a></li>
+              <li><a href="#Lists" data-toggle="tab">Lists</a></li>
+              <li><a href="#Exclusion" data-toggle="tab">Exclusion</a></li>
+              <li><a href="#TimeZone" data-toggle="tab">Time Zone</a></li>
+            </ul>
+            
+            <div id="tabs-content" class="tab-content">
+            	<!--File Manager-->
+            	<div class="tab-pane active fade in" id="FileManager">
+                	<div class="container">
+                        <div class="button-group">
+                        	<a href="#" class="btn btn-danger"> Exit </a>
+                            <span class="mleft-15">
+								<span class="fileinput-button">
+									<span class="btn btn-success">Upload</span>
+									<input id="fileupload" type="file" name="files[]" data-url="http://localhost:8888"/>
+								</span>
+                                <!-- <a href="#" class="btn btn-success"> Upload </a> -->
+                                <a data-toggle="modal" href="#content_add_manager" class="btn btn-primary"> Add Dir </a>
+                                <a data-toggle="modal" href="#content_del_manager" class="btn btn-primary"> Del Dir </a>
+                                <a id="download_btn" href="#" class="btn btn-default"> Download </a>
+                            </span>
+                            <span class="mleft-15">
+                                <a id="move_btn" data-toggle="modal" href="#content_move_manager" class="btn btn-primary"> Move </a>
+                                <a data-toggle="modal" href="#content_copy_manager" class="btn btn-primary"> Copy </a>
+                                <a data-toggle="modal" href="#content_view_manager" class="btn btn-primary"> View </a>
+                                <a data-toggle="modal" href="#content_edit_manager" type="button" class="btn btn-primary"> Edit </a>
+                                <a data-toggle="modal" href="#content_rename_manager" class="btn btn-primary"> Rename </a>
+                                <a id="delete_btn" href="" class="btn btn-warning"> Delete </a>
+                            </span>
+                        </div>
+                        
+                        <!--Demo Pagniation-->
+                        <div id="table-manager">
+                            <table class="table table-striped reset-m-btm">
+                                <thead>
+                                    <th> <input id="cb_all" type="checkbox" name="cb" /></th>
+                                    <th> Directory </th>
+                                    <th> File Name </th>
+                                    <th> Size </th>
+                                    <th> Date </th>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <!---->
+                        <!-- <div class="text-center">
+                            <ul class="pagination">
+                                <li class="disabled"> <span>&laquo;</span> </li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> 
+                                <li><a href="#">5</a></li> 
+                                <li><a href="#">6</a></li> 
+                                <li><a href="#">7</a></li> 
+                                <li><a href="#">&raquo;</a></li> 
+                            </ul>
+                        </div> -->
+                        
+                        <!--Demo for pagination-->
+                        <div class="text-center">
+                            <div id="pg_manager" class="paging"></div>
+                        </div>
+                        <!---->
+                    </div>
+                </div>
+                <!---->
+                
+                <!--List Definition-->
+                <div class="tab-pane fade" id="ListDefinition">
+                	<div class="container">
+                        <div class="button-group">
+                        	<a href="#" class="btn btn-danger"> Exit </a>
+                        	<span class="mleft-15">
+                                <a data-toggle="modal" href="#content_add_definition" class="btn btn-primary"> Add </a>
+                                <a data-toggle="modal" href="#content_copy_definition" class="btn btn-primary"> Copy </a>
+                                <a data-toggle="modal" href="#content_view_definition" class="btn btn-primary"> View </a>
+                                <a data-toggle="modal" href="#content_edit_definition" type="button" class="btn btn-primary"> Edit </a>
+                                <a href="#" class="btn btn-warning"> Delete </a>
+                            </span>
+                        </div>
+                        
+                        <table class="table table-striped">
+                        	<thead>
+                            	<th>Name</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                            	<tr>
+                                	<td>Definition short name 1</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 2</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 3</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 4</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 5</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 6</td>
+                                    <td>Text describing the definition files</td>
+                                </tr><tr>
+                                	<td>Definition short name 7</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 8</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 9</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                                <tr>
+                                	<td>Definition short name 10</td>
+                                    <td>Text describing the definition files</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="text-center">
+                            <ul class="pagination">
+                                <li class="disabled"> <span>&laquo;</span> </li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> 
+                                <li><a href="#">5</a></li> 
+                                <li><a href="#">6</a></li> 
+                                <li><a href="#">7</a></li> 
+                                <li><a href="#">&raquo;</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+                
+                <!--Import-->
+                <div class="tab-pane fade" id="Import">
+                	<div class="container">
+                        <div class="button-group">
+                        	<a href="#" class="btn btn-danger"> Exit </a>
+                            <span class="mleft-15">
+                                <a data-toggle="modal" href="#content_add_import" class="btn btn-primary"> Add </a>
+                                <a data-toggle="modal" href="#content_edit_import" class="btn btn-primary"> Edit </a>
+                                <a data-toggle="modal" href="#" class="btn btn-warning"> Delete </a>
+                            </span>
+                        </div>
+                        
+                        <div class="panel panel-default mtop-20">
+                        	<div class="panel-heading">On Demand Import</div>
+                            <div class="panel-body">
+                            	<table class="table table-borderless mbtm-10">
+                                	<thead>
+                                    	<th>Directory</th>
+                                        <th>File</th>
+                                        <th>List Definition</th>
+                                        <th>List name</th>
+                                        <th></th>
+                                        <th>Status</th>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                        	<td>
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>Directory</option>
+                                                    <option>Directory 1</option>
+                                                    <option>Directory 2</option>
+                                                    <option>Directory 3</option>
+                                                    <option>Directory 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td>
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>File</option>
+                                                    <option>File 1</option>
+                                                    <option>File 2</option>
+                                                    <option>File 3</option>
+                                                    <option>File 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td>
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>List Definition</option>
+                                                    <option>List 1</option>
+                                                    <option>List 2</option>
+                                                    <option>List 3</option>
+                                                    <option>List 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td class="vcenter">
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>List Name</option>
+                                                    <option>List Name 1</option>
+                                                    <option>List Name 2</option>
+                                                    <option>List Name 3</option>
+                                                    <option>List Name 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td class="vcenter hack-width">
+                                            	<input type="button" class="btn btn-info" value="Start" />
+                                            </td>
+
+											<td class="vcenter">
+                                            	<div class="progress reset-m-btm">
+                                                	<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">Scheduled Import</div>
+                            <div class="panel-body">
+                            	<table class="table table-striped mbtm-10">
+                                	<thead>
+                                    	<th>Directory</th>
+                                        <th>List Definition</th>
+                                        <th>Scheduled Days</th>
+                                        <th>Scheduled Time</th>
+                                        <th>List Name</th>
+                                        <th class="text-center">Enable</th>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                        	<td>Directory 1</td>
+                                            <td>List Definition 1</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 1</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 2</td>
+                                            <td>List Definition 2</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 2</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 3</td>
+                                            <td>List Definition 3</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 3</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 4</td>
+                                            <td>List Definition 4</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 4</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 5</td>
+                                            <td>List Definition 5</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 5</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">Import History</div>
+                            <div class="panel-body">
+                            	<table class="table table-striped mbtm-10">
+                                	<thead>
+                                    	<th>Directory</th>
+                                        <th>File Name</th>
+                                        <th>List Definition</th>
+                                        <th>List Name</th>
+                                        <th>Started</th>
+                                        <th>Finished</th>
+                                        <th>Results</th>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                        	<td>Directory 1</td>
+                                            <td>File Name 1</td>
+                                            <td>List Definition 1</td>
+                                            <td>List Name 1</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td class="vcenter">
+                                            	<div class="progress reset-m-btm">
+                                                	<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 2</td>
+                                            <td>File Name 2</td>
+                                            <td>List Definition 2</td>
+                                            <td>List Name 2</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>1500 records imported/12 <span class="text-danger">Errors</span></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 3</td>
+                                            <td>File Name 3</td>
+                                            <td>List Definition 3</td>
+                                            <td>List Name 3</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>1200 records imported/0 <span class="text-success">Errors</span></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 4</td>
+                                            <td>File Name 4</td>
+                                            <td>List Definition 4</td>
+                                            <td>List Name 4</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>800 records imported/06 <span class="text-danger">Errors</span></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 5</td>
+                                            <td>File Name 5</td>
+                                            <td>List Definition 5</td>
+                                            <td>List Name 5</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>680 records imported/15 <span class="text-danger">Errors</span></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+                
+                <!--Export-->
+                <div class="tab-pane fade" id="Export">
+                	<div class="container">
+                        <div class="button-group">
+                        	<a href="#" class="btn btn-danger"> Exit </a>
+                            <span class="mleft-15">
+                                <a data-toggle="modal" href="#content_add_export" class="btn btn-primary"> Add </a>
+                                <a data-toggle="modal" href="#content_edit_export" class="btn btn-primary"> Edit </a>
+                                <a data-toggle="modal" href="#" class="btn btn-warning"> Delete </a>
+                            </span>
+                        </div>
+                        
+                        <div class="panel panel-default mtop-20">
+                        	<div class="panel-heading">On Demand Export</div>
+                            <div class="panel-body">
+                            	<table class="table table-borderless mbtm-10">
+                                	<thead>
+                                    	<th>Directory</th>
+                                        <th>File</th>
+                                        <th>List Definition</th>
+                                        <th>List name</th>
+                                        <th></th>
+                                        <th>Status</th>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                        	<td>
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>Directory</option>
+                                                    <option>Directory 1</option>
+                                                    <option>Directory 2</option>
+                                                    <option>Directory 3</option>
+                                                    <option>Directory 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td>
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>File</option>
+                                                    <option>File 1</option>
+                                                    <option>File 2</option>
+                                                    <option>File 3</option>
+                                                    <option>File 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td>
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>List Definition</option>
+                                                    <option>List 1</option>
+                                                    <option>List 2</option>
+                                                    <option>List 3</option>
+                                                    <option>List 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td class="vcenter">
+                                            	<select class="form-control" autocomplete="off">
+                                                	<option disabled selected>List Name</option>
+                                                    <option>List Name 1</option>
+                                                    <option>List Name 2</option>
+                                                    <option>List Name 3</option>
+                                                    <option>List Name 4</option>
+                                                </select>
+                                            </td>
+                                            
+                                            <td class="vcenter hack-width">
+                                            	<input type="button" class="btn btn-info" value="Start" />
+                                            </td>
+
+											<td class="vcenter">
+                                            	<div class="progress reset-m-btm">
+                                                	<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">Scheduled Export</div>
+                            <div class="panel-body">
+                            	<table class="table table-striped mbtm-10">
+                                	<thead>
+                                    	<th>Directory</th>
+                                        <th>List Definition</th>
+                                        <th>Scheduled Days</th>
+                                        <th>Scheduled Time</th>
+                                        <th>List Name</th>
+                                        <th class="text-center">Enable</th>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                        	<td>Directory 1</td>
+                                            <td>List Definition 1</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 1</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 2</td>
+                                            <td>List Definition 2</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 2</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 3</td>
+                                            <td>List Definition 3</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 3</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 4</td>
+                                            <td>List Definition 4</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 4</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 5</td>
+                                            <td>List Definition 5</td>
+                                            <td>M T W T F S S</td>
+                                            <td>HH:MM</td>
+                                            <td>List Name 5</td>
+											<td class="text-center"><input type="checkbox" /></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                        	<div class="panel-heading">Export History</div>
+                            <div class="panel-body">
+                            	<table class="table table-striped mbtm-10">
+                                	<thead>
+                                    	<th>Directory</th>
+                                        <th>File Name</th>
+                                        <th>List Definition</th>
+                                        <th>List Name</th>
+                                        <th>Started</th>
+                                        <th>Finished</th>
+                                        <th>Results</th>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                        	<td>Directory 1</td>
+                                            <td>File Name 1</td>
+                                            <td>List Definition 1</td>
+                                            <td>List Name 1</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td class="vcenter">
+                                            	<div class="progress reset-m-btm">
+                                                	<div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 2</td>
+                                            <td>File Name 2</td>
+                                            <td>List Definition 2</td>
+                                            <td>List Name 2</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>1500 records imported/12 <span class="text-danger">Errors</span></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 3</td>
+                                            <td>File Name 3</td>
+                                            <td>List Definition 3</td>
+                                            <td>List Name 3</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>1200 records imported/0 <span class="text-success">Errors</span></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 4</td>
+                                            <td>File Name 4</td>
+                                            <td>List Definition 4</td>
+                                            <td>List Name 4</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>800 records imported/06 <span class="text-danger">Errors</span></td>
+                                        </tr>
+                                        <tr>
+                                        	<td>Directory 5</td>
+                                            <td>File Name 5</td>
+                                            <td>List Definition 5</td>
+                                            <td>List Name 5</td>
+                                            <td>DD/MM/YYYY HH:MM</td>
+                                            <td>HH:MM</td>
+                                            <td>680 records imported/15 <span class="text-danger">Errors</span></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+                
+                <!--Lists-->
+                <div class="tab-pane fade" id="Lists">
+                	<div class="container">
+                        <div class="button-group">
+                        	<a href="#" class="btn btn-danger"> Exit </a>
+                            <span class="mleft-15">
+                                <a data-toggle="modal" href="#content_view_lists" class="btn btn-primary"> View </a>
+                                <a data-toggle="modal" href="#" class="btn btn-warning"> Delete </a>
+                            </span>
+                        </div>
+                    
+                        <table class="table table-striped">
+                            <thead>
+                                <th>List Name</th>
+                                <th>Record</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>List name 1</td>
+                                    <td>Records 1</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 2</td>
+                                    <td>Records 2</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 3</td>
+                                    <td>Records 3</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 4</td>
+                                    <td>Records 4</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 5</td>
+                                    <td>Records 5</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 6</td>
+                                    <td>Records 6</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 7</td>
+                                    <td>Records 7</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 8</td>
+                                    <td>Records 8</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 9</td>
+                                    <td>Records 9</td>
+                                </tr>
+                                <tr>
+                                    <td>List name 10</td>
+                                    <td>Records 10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    
+                        <div class="text-center">
+                            <ul class="pagination">
+                                <li class="disabled"> <span>&laquo;</span> </li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> 
+                                <li><a href="#">5</a></li> 
+                                <li><a href="#">6</a></li> 
+                                <li><a href="#">7</a></li> 
+                                <li><a href="#">&raquo;</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+                
+                <!--Exclusion-->
+                <div class="tab-pane fade" id="Exclusion">
+                	<div class="container">
+                        <div class="button-group">
+                        	<a href="#" class="btn btn-danger"> Exit </a>
+                            <span class="mleft-15">
+                                <a data-toggle="modal" href="#content_import_exclusions" class="btn btn-primary"> Import </a>
+                                <a data-toggle="modal" href="#content_export_exclusions" class="btn btn-primary"> Export </a>
+                            </span>
+                            <span class="mleft-15">
+                            	<a data-toggle="modal" href="#content_add_exclusions" class="btn btn-primary"> Add </a>
+                                <a data-toggle="modal" href="#content_edit_exclusions" class="btn btn-primary"> Edit </a>
+                                <a data-toggle="modal" href="#" class="btn btn-warning"> Delete </a>
+                            </span>
+                        </div>
+                        
+                        <table class="table table-striped">
+                        	<thead>
+                            	<th>Excluded Value</th>
+                                <th>Type</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Modified Date</th>
+                            </thead>
+                            <tbody>
+                            	<tr>
+                                	<td>0923001122</td>
+                                    <td>Phone Number</td>
+                                    <td>01/01/2012</td>
+                                    <td>01/01/2013</td>
+                                    <td>01/02/2012</td>
+                                </tr>
+                                <tr>
+                                	<td>0932144299</td>
+                                    <td>Phone Number</td>
+                                    <td>02/01/2010</td>
+                                    <td>02/01/2013</td>
+                                    <td>03/02/2012</td>
+                                </tr>
+                                <tr>
+                                	<td>9312333222</td>
+                                    <td>Phone Number</td>
+                                    <td>05/02/2009</td>
+                                    <td>02/01/2016</td>
+                                    <td>08/10/2010</td>
+                                </tr>
+                                <tr>
+                                	<td>123 456 1324 444</td>
+                                    <td>Social Security Number</td>
+                                    <td>02/05/2010</td>
+                                    <td>02/06/2013</td>
+                                    <td>03/02/2011</td>
+                                </tr>
+                                <tr>
+                                	<td>9313 422112</td>
+                                    <td>Account Number</td>
+                                    <td>30/09/2002</td>
+                                    <td>13/01/2005</td>
+                                    <td>10/02/2012</td>
+                                </tr>
+                                <tr>
+                                	<td>3461331411</td>
+                                    <td>Social Security Number</td>
+                                    <td>07/02/2011</td>
+                                    <td>12/11/2016</td>
+                                    <td>24/09/2011</td>
+                                </tr>
+                                <tr>
+                                	<td>5656 34522</td>
+                                    <td>Account Number</td>
+                                    <td>24/09/2003</td>
+                                    <td>25/02/2005</td>
+                                    <td>03/10/2004</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="text-center">
+                            <ul class="pagination">
+                                <li class="disabled"> <span>&laquo;</span> </li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> 
+                                <li><a href="#">5</a></li> 
+                                <li><a href="#">6</a></li> 
+                                <li><a href="#">7</a></li> 
+                                <li><a href="#">&raquo;</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+                
+                <!--Time Zone-->
+                <div class="tab-pane fade" id="TimeZone">
+                	<div class="container">
+                        <div class="button-group">
+                        	<a href="#" class="btn btn-danger"> Exit </a>
+                            <span class="mleft-15">
+                                <a data-toggle="modal" href="#content_add_timezone" class="btn btn-primary"> Add </a>
+                                <a data-toggle="modal" href="#content_edit_timezone" class="btn btn-primary"> Edit </a>
+                                <a data-toggle="modal" href="#" class="btn btn-warning"> Delete </a>
+                            </span>
+                        </div>
+                        
+                        <table class="table table-striped">
+                        	<thead>
+                            	<th>Name</th>
+                                <th>Offset</th>
+                                <th>Description</th>
+                            </thead>
+                            <tbody>
+                            	<tr>
+                                	<td>VIC</td>
+                                    <td>+10:00</td>
+                                    <td>Description of the time zone</td>
+                                </tr>
+                                <tr>
+                                	<td>VIC 1</td>
+                                    <td>+07:00</td>
+                                    <td>Description of the time zone</td>
+                                </tr>
+                                <tr>
+                                	<td>VIC 2</td>
+                                    <td>+06:00</td>
+                                    <td>Description of the time zone</td>
+                                </tr>
+                                <tr>
+                                	<td>VIC 3</td>
+                                    <td>+05:00</td>
+                                    <td>Description of the time zone</td>
+                                </tr>
+                                <tr>
+                                	<td>VIC 4</td>
+                                    <td>+05:00</td>
+                                    <td>Description of the time zone</td>
+                                </tr>
+                                <tr>
+                                	<td>VIC 5</td>
+                                    <td>+03:00</td>
+                                    <td>Description of the time zone</td>
+                                </tr>
+                                <tr>
+                                	<td>VIC 6</td>
+                                    <td>+01:00</td>
+                                    <td>Description of the time zone</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="text-center">
+                            <ul class="pagination">
+                                <li class="disabled"> <span>&laquo;</span> </li>
+                                <li class="active"><span>1</span></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li> 
+                                <li><a href="#">5</a></li> 
+                                <li><a href="#">6</a></li> 
+                                <li><a href="#">7</a></li> 
+                                <li><a href="#">&raquo;</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+            </div>
+        </div>
+    <!---->
+    </div>
+<!--Modal File Manager-->
+	<!--Add-Directory-->
+    <div class="modal fade" id="content_add_manager" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ADD - DIRECTORY</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="form-group">
+                    	<div class="mbtm-10">
+                        	<span class="font-16">Directory</span>
+                        </div>
+                        <select class="form-control" autocomplete="off">
+                        	<option disabled selected>Select directory</option>
+                        	<option>Directory 1</option>
+                            <option>Directory 2</option>
+                            <option>Directory 3</option>
+                            <option>Directory 4</option>
+                        </select>
+                    </div>
+                	<div class="form-group">
+                    	<div class="mbtm-10">
+                    		<span class="font-16">Name</span>
+                        </div>
+                        <input id="dirname_txt" type="text" class="form-control" placeholder="Directory's name" /> 
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input id='adddir_btn' type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Add-Directory-->
+
+	<!--Delete Directory-->
+	<div class="modal fade" id="content_del_manager" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">DELETE - DIRECTORY</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="form-group">
+                    	<div class="mbtm-10">
+                    		<span for="name" class="font-16">Name</span>
+                        </div>
+                        <select class="form-control" autocomplete="off">
+                        	<option selected disabled>Select a directory to delete</option>
+                            <option>Directory 1</option>
+                            <option>Directory 2</option>
+                            <option>Directory 3</option>
+                            <option>Directory 4</option>
+                        </select> 
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input id="deldir_btn" type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Delete-Directory-->
+
+	<!--Move-Manager-->
+	<div class="modal fade" id="content_move_manager" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">MOVE - FILE</h4>
+                </div>
+                <div class="modal-body move-manager">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Original Directory</span>
+                            </div>
+                            
+                            <div class="div-cell right">
+                            	<div class="mbtm-10">
+                            		<span id="original_dir" class="font-16">The current directory of the file</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Destination Directory</span>
+                            </div>
+                            <div class="div-cell">
+                                <select class="form-control" autocomplete="off">
+                                    <option disabled selected>Select a destination directory</option>
+                                    <option>Directory 1</option>
+                                    <option>Directory 2</option>
+                                    <option>Directory 3</option>
+                                    <option>Directory 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input id="move_btn" type="button" class="btn btn-primary" value="Move" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Move-Manager-->
+
+	<!--Copy-Manager-->
+	<div class="modal fade" id="content_copy_manager" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">COPY - FILE</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="form-group">
+                    	<div class="mbtm-10">
+                    		<span for="name" class="font-16">Enter the name for the copy of the file</span>
+                        </div>
+                        <input type="text" id="name" class="form-control" placeholder="Name of File's copy" /> 
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="OK" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!---->
+
+	<!--View-Manager-->
+	<div class="modal fade" id="content_view_manager" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content view-manager">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">VIEW - FILE</h4>
+                </div>
+                <div class="modal-body">
+                     <textarea class="form-control" rows="7"></textarea> 
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of View-Manager-->
+
+	<!--Edit-Manager-->
+	<div class="modal fade" id="content_edit_manager" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content view-manager">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">EDIT - FILE</h4>
+                </div>
+                <div class="modal-body">
+                     <textarea class="form-control" rows="7"></textarea> 
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Edit-Manager-->
+
+	<!--Rename-manager-->
+	<div class="modal fade" id="content_rename_manager" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">RENAME - FILE</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="form-group">
+                    	<div class="mbtm-10">
+                    		<span for="name" class="font-16">Enter the new name for the file</span>
+                        </div>
+                        <input type="text" id="name" class="form-control" placeholder="New name of File" /> 
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="OK" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Rename-Manager-->
+<!--End of File Manager-->
+
+<!--List Definition-->
+	<!--Add-Definition-->
+    <div class="modal fade adjust-position" id="content_add_definition" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog list-definition">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ADD - LIST DEFINITION</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mright-10">Name</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter name" />
+                            </div>
+                            
+                            <div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mleft-20 mright-10">Description</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mtop-20">
+                        <div class="div-table full-w">
+                            <div class="div-row">
+                                <div class="div-cell">
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Fixed Length Text</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Delimited Text</span>
+                                        </label>
+                                        
+                                        <span class="mleft-20">Delimiter</span>
+                                        <input type="text" class="form-control number-box inline-block" maxlength="3" placeholder="000" />
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Excel</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Header Row on Import</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Footer Record on Import</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Header on Export</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Contact Fields on Export</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped table-condensed mbtm-10">
+                    	<thead>
+                        	<th>#</th>
+                            <th>Import Size</th>
+                            <th>Field Name</th>
+                            <th>Type</th>
+                            <th>List Size</th>
+                            <th>Validation</th>
+                            <th class="text-center">Allow Blank</th>
+                            <th>Mapping</th>
+                            <th class="text-center">Export</th>
+                        </thead>
+                        <tbody class="list-definition-table">
+                        	<tr>
+                            	<td>2</td>
+                                <td>24</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>20</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>1</td>
+                                <td>20</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>10</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>3</td>
+                                <td>35</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>27</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>4</td>
+                                <td>09</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>42</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>5</td>
+                                <td>78</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>102</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div>
+                    	<span class="pull-left">
+                        	<input type="button" class="btn btn-primary" value="Add" />
+                            <input type="button" class="btn btn-primary" value="Edit" />
+                            <input type="button" class="btn btn-danger" value="Delete" />
+                        </span>
+                        
+                        <span class="pull-right">
+                        	<input type="button" class="btn btn-primary" value="Move Up" />
+                            <input type="button" class="btn btn-primary" value="Move Down" />
+                        </span>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Add-Definition-->
+
+	<!--Copy-Definition-->
+    <div class="modal fade adjust-position" id="content_copy_definition" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog list-definition">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">COPY - LIST DEFINITION</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mright-10">Name</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter name" />
+                            </div>
+                            
+                            <div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mleft-20 mright-10">Description</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mtop-20">
+                        <div class="div-table full-w">
+                            <div class="div-row">
+                                <div class="div-cell">
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Fixed Length Text</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Delimited Text</span>
+                                        </label>
+                                        
+                                        <span class="mleft-20">Delimiter</span>
+                                        <input type="text" class="form-control number-box inline-block" maxlength="3" placeholder="000" />
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Excel</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Header Row on Import</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Footer Record on Import</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Header on Export</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Contact Fields on Export</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped table-condensed mbtm-10">
+                    	<thead>
+                        	<th>#</th>
+                            <th>Import Size</th>
+                            <th>Field Name</th>
+                            <th>Type</th>
+                            <th>List Size</th>
+                            <th>Validation</th>
+                            <th class="text-center">Allow Blank</th>
+                            <th>Mapping</th>
+                            <th class="text-center">Export</th>
+                        </thead>
+                        <tbody class="list-definition-table">
+                        	<tr>
+                            	<td>2</td>
+                                <td>24</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>20</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>1</td>
+                                <td>20</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>10</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>3</td>
+                                <td>35</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>27</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>4</td>
+                                <td>09</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>42</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>5</td>
+                                <td>78</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>102</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div>
+                    	<span class="pull-left">
+                        	<input type="button" class="btn btn-primary" value="Add" />
+                            <input type="button" class="btn btn-primary" value="Edit" />
+                            <input type="button" class="btn btn-danger" value="Delete" />
+                        </span>
+                        
+                        <span class="pull-right">
+                        	<input type="button" class="btn btn-primary" value="Move Up" />
+                            <input type="button" class="btn btn-primary" value="Move Down" />
+                        </span>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Copy-Definition-->
+    
+    <!--View-Definition-->
+    <div class="modal fade adjust-position" id="content_view_definition" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog list-definition">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">VIEW - LIST DEFINITION</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mright-10">Name</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter name" />
+                            </div>
+                            
+                            <div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mleft-20 mright-10">Description</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mtop-20">
+                        <div class="div-table full-w">
+                            <div class="div-row">
+                                <div class="div-cell">
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Fixed Length Text</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Delimited Text</span>
+                                        </label>
+                                        
+                                        <span class="mleft-20">Delimiter</span>
+                                        <input type="text" class="form-control number-box inline-block" maxlength="3" placeholder="000" />
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Excel</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Header Row on Import</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Footer Record on Import</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Header on Export</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Contact Fields on Export</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped table-condensed mbtm-10">
+                    	<thead>
+                        	<th>#</th>
+                            <th>Import Size</th>
+                            <th>Field Name</th>
+                            <th>Type</th>
+                            <th>List Size</th>
+                            <th>Validation</th>
+                            <th class="text-center">Allow Blank</th>
+                            <th>Mapping</th>
+                            <th class="text-center">Export</th>
+                        </thead>
+                        <tbody class="list-definition-table">
+                        	<tr>
+                            	<td>2</td>
+                                <td>24</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>20</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>1</td>
+                                <td>20</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>10</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>3</td>
+                                <td>35</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>27</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>4</td>
+                                <td>09</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>42</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>5</td>
+                                <td>78</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>102</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of View-Definition-->
+    
+    <!--Edit-Definition-->
+    <div class="modal fade adjust-position" id="content_edit_definition" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog list-definition">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">EDIT - LIST DEFINITION</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mright-10">Name</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter name" />
+                            </div>
+                            
+                            <div class="div-cell hack-width vcenter">
+                            	<span class="font-16 mleft-20 mright-10">Description</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control" placeholder="Enter description" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mtop-20">
+                        <div class="div-table full-w">
+                            <div class="div-row">
+                                <div class="div-cell">
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Fixed Length Text</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Delimited Text</span>
+                                        </label>
+                                        
+                                        <span class="mleft-20">Delimiter</span>
+                                        <input type="text" class="form-control number-box inline-block" maxlength="3" placeholder="000" />
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="radio" name="group1" />
+                                            <span class="mleft-5 font-16">Excel</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Header Row on Import</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Ignore Footer Record on Import</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-cell">
+                                    <div class="i-height">
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Header on Export</span>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="reset-label pointer">
+                                            <input type="checkbox" name="group1" />
+                                            <span class="mleft-5 font-16">Include Contact Fields on Export</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <table class="table table-striped table-condensed mbtm-10">
+                    	<thead>
+                        	<th>#</th>
+                            <th>Import Size</th>
+                            <th>Field Name</th>
+                            <th>Type</th>
+                            <th>List Size</th>
+                            <th>Validation</th>
+                            <th class="text-center">Allow Blank</th>
+                            <th>Mapping</th>
+                            <th class="text-center">Export</th>
+                        </thead>
+                        <tbody class="list-definition-table">
+                        	<tr>
+                            	<td>2</td>
+                                <td>24</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>20</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>1</td>
+                                <td>20</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>10</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>3</td>
+                                <td>35</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>27</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>4</td>
+                                <td>09</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>42</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                            </tr>
+                            
+                            <tr>
+                            	<td>5</td>
+                                <td>78</td>
+                                <td>Surname</td>
+                                <td>String</td>
+                                <td>102</td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>Text</option>
+                                        <option>Number</option>
+                                        <option>String</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+                                <td>
+                                	<select class="form-control" autocomplete="off">
+                                    	<option>First Name</option>
+                                        <option>Mid Name</option>
+                                        <option>Last Name</option>
+                                    </select>
+                                </td>
+                                <td class="text-center"><input type="checkbox" /></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div>
+                    	<span class="pull-left">
+                        	<input type="button" class="btn btn-primary" value="Add" />
+                            <input type="button" class="btn btn-primary" value="Edit" />
+                            <input type="button" class="btn btn-danger" value="Delete" />
+                        </span>
+                        
+                        <span class="pull-right">
+                        	<input type="button" class="btn btn-primary" value="Move Up" />
+                            <input type="button" class="btn btn-primary" value="Move Down" />
+                        </span>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+                
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Edit-Definition-->
+<!--End of List Definition-->
+
+<!--Import-->
+	<!--Add-Import-->
+    <div class="modal fade" id="content_add_import" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ADD - SCHEDULED IMPORT</h4>
+                </div>
+                <div class="modal-body move-manager">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Enabled</span>
+                            </div>
+                            <div class="div-cell right">
+								<input type="checkbox" class="mbtm-10"/>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Import Directory</span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                	<option disabled selected>Directory</option>
+                                    <option>Directory 1</option>
+                                    <option>Directory 2</option>
+                                    <option>Directory 3</option>
+                                    <option>Directory 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">List Definition</span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                	<option disabled selected>List Definition</option>
+                                    <option>List 1</option>
+                                    <option>List 2</option>
+                                    <option>List 3</option>
+                                    <option>List 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Schedule</span>
+                            </div>
+                            <div class="div-cell vcenter">
+                            	<div class="div-table cell-cb-import full-w  mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<span>Mon</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Tue</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Wed</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Thu</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Fri</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Sat</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Sun</span>
+                                        </div>
+                                    </div>
+                                    <div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="Monday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Tuesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Wednesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Thursday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Friday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Saturday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Sunday" type="checkbox" />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-table mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="single" type="radio" name="group" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<label class="reset-label font-16 pointer mleft-5" for="single">Single Import at</label>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<select class="form-control w-time-select mleft-20" autocomplete="off">
+                                            	<option disabled selected>Time</option>
+                                                <option>HH</option>
+                                                <option>MM</option>
+                                                <option>SS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-table mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="repeat" type="radio" name="group" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<label class="reset-label font-16 pointer mleft-5" for="repeat">Repeat every</label>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input type="text" class="form-control number-box inline-block" maxlength="2" placeholder="00" /><span class="font-16">mins</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-table mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<span class="font-16">From</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<select class="form-control w-time-select mleft-20" autocomplete="off">
+                                            	<option disabled selected>Time</option>
+                                                <option>HH</option>
+                                                <option>MM</option>
+                                                <option>SS</option>
+                                            </select>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span class="mleft-20 font-16">To</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<select class="form-control w-time-select mleft-20" autocomplete="off">
+                                            	<option disabled selected>Time</option>
+                                                <option>HH</option>
+                                                <option>MM</option>
+                                                <option>SS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">List name</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control mbtm-10" placeholder="List Name" />
+                                <div>
+                                	<label class="radio-inline reset-label font-16">
+                                		<input type="radio" id="newlist" name="group1"> Create new list
+                                    </label>
+                                    <label class="radio-inline reset-label font-16">
+                                        <input type="radio" id="append" name="group1"> Append to Existing
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    
+    <!--Edit-Import-->
+    <div class="modal fade" id="content_edit_import" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">EDIT - SCHEDULED IMPORT</h4>
+                </div>
+                <div class="modal-body move-manager">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Enabled</span>
+                            </div>
+                            <div class="div-cell right">
+								<input type="checkbox" class="mbtm-10"/>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Import Directory</span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                	<option disabled selected>Directory</option>
+                                    <option>Directory 1</option>
+                                    <option>Directory 2</option>
+                                    <option>Directory 3</option>
+                                    <option>Directory 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">List Definition</span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                	<option disabled selected>List Definition</option>
+                                    <option>List 1</option>
+                                    <option>List 2</option>
+                                    <option>List 3</option>
+                                    <option>List 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Schedule</span>
+                            </div>
+                            <div class="div-cell vcenter">
+                            	<div class="div-table cell-cb-import full-w  mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<span>Mon</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Tue</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Wed</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Thu</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Fri</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Sat</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>Sun</span>
+                                        </div>
+                                    </div>
+                                    <div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="Monday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Tuesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Wednesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Thursday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Friday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Saturday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Sunday" type="checkbox" />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-table mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="single" type="radio" name="group" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<label class="reset-label font-16 pointer mleft-5" for="single">Single Import at</label>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<select class="form-control w-time-select mleft-20" autocomplete="off">
+                                            	<option disabled selected>Time</option>
+                                                <option>HH</option>
+                                                <option>MM</option>
+                                                <option>SS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-table mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="repeat" type="radio" name="group" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<label class="reset-label font-16 pointer mleft-5" for="repeat">Repeat every</label>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input type="text" class="form-control number-box inline-block" maxlength="2" placeholder="00" /><span class="font-16">mins</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="div-table mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<span class="font-16">From</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<select class="form-control w-time-select mleft-20" autocomplete="off">
+                                            	<option disabled selected>Time</option>
+                                                <option>HH</option>
+                                                <option>MM</option>
+                                                <option>SS</option>
+                                            </select>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span class="mleft-20 font-16">To</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<select class="form-control w-time-select mleft-20" autocomplete="off">
+                                            	<option disabled selected>Time</option>
+                                                <option>HH</option>
+                                                <option>MM</option>
+                                                <option>SS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">List name</span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control mbtm-10" placeholder="List Name" />
+                                <div>
+                                	<label class="radio-inline reset-label font-16">
+                                		<input type="radio" id="newlist" name="group1"> Create new list
+                                    </label>
+                                    <label class="radio-inline reset-label font-16">
+                                        <input type="radio" id="append" name="group1"> Append to Existing
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+<!--End of Import-->
+
+<!--Export-->
+	<!--Add-Export-->
+    <div class="modal fade" id="content_add_export" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ADD - SCHEDULED EXPORT</h4>
+                </div>
+                <div class="modal-body move-manager">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Enabled</span>
+                            </div>
+                            <div class="div-cell right">
+								<input type="checkbox" class="mbtm-10"/>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell vcenter">
+                            	<div class="mbtm-10">
+                            		<span class="font-16">List Name</span>
+                                </div>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control mbtm-10" placeholder="List Name" />
+                            </div>
+                        </div>
+                        <div class="div-row vcenter">
+                        	<div class="div-cell">
+                            	<div class="mbtm-10">
+                            		<span class="font-16">List Definition</span>
+                                </div>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                	<option disabled selected>List Definition</option>
+                                    <option>List 1</option>
+                                    <option>List 2</option>
+                                    <option>List 3</option>
+                                    <option>List 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Schedule</span>
+                            </div>
+                            <div class="div-cell vcenter">
+                            	<div class="div-table cell-cb pull-left mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<span>M</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>T</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>W</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>T</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>F</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>S</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>S</span>
+                                        </div>
+                                    </div>
+                                    <div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="Monday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Tuesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Wednesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Thursday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Friday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Saturday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Sunday" type="checkbox" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pull-right half-w">
+                                	<select class="form-control mtop-3" autocomplete="off">
+                                    	<option disabled selected>Time</option>
+                                        <option>HH</option>
+                                        <option>MM</option>
+                                        <option>SS</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Export Directory</span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control" autocomplete="off">
+                                	<option disabled selected>Directory</option>
+                                    <option>Directory 1</option>
+                                    <option>Directory 2</option>
+                                    <option>Directory 3</option>
+                                    <option>Directory 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Add-Export-->
+    
+    <!--Edit-Export-->
+    <div class="modal fade" id="content_edit_export" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">EDIT - SCHEDULED EXPORT</h4>
+                </div>
+                <div class="modal-body move-manager">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Enabled</span>
+                            </div>
+                            <div class="div-cell right">
+								<input type="checkbox" class="mbtm-10"/>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell vcenter">
+                            	<div class="mbtm-10">
+                            		<span class="font-16">List Name</span>
+                                </div>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control mbtm-10" placeholder="List Name" />
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell vcenter">
+                            	<div class="mbtm-10">
+                            		<span class="font-16">List Definition</span>
+                                </div>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                	<option disabled selected>List Definition</option>
+                                    <option>List 1</option>
+                                    <option>List 2</option>
+                                    <option>List 3</option>
+                                    <option>List 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Schedule</span>
+                            </div>
+                            <div class="div-cell vcenter">
+                            	<div class="div-table cell-cb pull-left mbtm-10">
+                                	<div class="div-row">
+                                    	<div class="div-cell">
+                                        	<span>M</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>T</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>W</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>T</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>F</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>S</span>
+                                        </div>
+                                        <div class="div-cell">
+                                        	<span>S</span>
+                                        </div>
+                                    </div>
+                                    <div class="div-row">
+                                    	<div class="div-cell">
+                                        	<input id="Monday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Tuesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Wednesday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Thursday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Friday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Saturday" type="checkbox" />
+                                        </div>
+                                        <div class="div-cell">
+                                        	<input id="Sunday" type="checkbox" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pull-right half-w">
+                                	<select class="form-control mtop-3" autocomplete="off">
+                                    	<option disabled selected>Time</option>
+                                        <option>HH</option>
+                                        <option>MM</option>
+                                        <option>SS</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Export Directory</span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control" autocomplete="off">
+                                	<option disabled selected>Directory</option>
+                                    <option>Directory 1</option>
+                                    <option>Directory 2</option>
+                                    <option>Directory 3</option>
+                                    <option>Directory 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+<!--End of Add Scheduled-->
+
+<!--Lists-->
+	<!--View-Lists-->
+	<div class="modal fade adjust-list-pos" id="content_view_lists" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog view-lists">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">VIEW - LISTS</h4>
+                </div>
+                <div class="modal-body">
+                	<div class="form-inline">
+                   		<div class="form-group">
+                        	<input type="text" class="form-control" maxlength="20" placeholder="Search name"/>
+                        </div>
+                        <div class="form-group">
+                        	<button type="button" class="btn btn-default">
+                               <img src="image/search.png"/> Search
+                            </button>
+
+                        </div>
+                    </div>
+                	<table class="table table-striped">
+                    	<thead>
+                        	<th>Field 1</th>
+                            <th>Field 2</th>
+                            <th>Field 3</th>
+                            <th>Field 4</th>
+                            <th>Field 5</th>
+                        </thead>
+                        <tbody>
+                        	<tr>
+                            	<td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                                <td>Content 5</td>
+                            </tr>
+                            <tr>
+                            	<td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                                <td>Content 5</td>
+                            </tr>
+                            <tr>
+                            	<td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                                <td>Content 5</td>
+                            </tr>
+                            <tr>
+                            	<td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                                <td>Content 5</td>
+                            </tr>
+                            <tr>
+                            	<td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                                <td>Content 5</td>
+                            </tr>
+                            <tr>
+                            	<td>Content 1</td>
+                                <td>Content 2</td>
+                                <td>Content 3</td>
+                                <td>Content 4</td>
+                                <td>Content 5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="text-center">
+                        <ul class="pagination">
+                            <li class="disabled"> <span>&laquo;</span> </li>
+                            <li class="active"><span>1</span></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li> 
+                            <li><a href="#">5</a></li> 
+                            <li><a href="#">6</a></li> 
+                            <li><a href="#">7</a></li> 
+                            <li><a href="#">&raquo;</a></li> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of View-Lists-->
+<!--End of List-->
+
+<!--Exclusions-->
+	<!--Add Exclusions-->
+    <div class="modal fade" id="content_add_exclusions" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ADD - EXCLUSION</h4>
+                </div>
+                <div class="modal-body move-manager add-exlusion">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Exclusion Value</span>
+                            </div>
+                            <div class="div-cell right">
+                            	<input type="text" class="form-control mbtm-10 value" placeholder="00" />
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Type</span>
+                            </div>
+                            <div class="div-cell">
+                                <select class="form-control mbtm-10" autocomplete="off">
+                                    <option disabled selected>Phone Number</option>
+                                    <option>0913894823</option>
+                                    <option>0841233232</option>
+                                    <option>1123005223</option>
+                                    <option>0984513123</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Start Date</span>
+                            </div>
+                            <div class="div-cell">
+                                <div class="input-append date" id="start_date_add" data-date="" data-date-format="dd/mm/yyyy">
+                                    <input class="date-appear" size="16" type="text" placeholder="dd/mm/yyyy" readonly />
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">End Date</span>
+                            </div>
+                            <div class="div-cell">
+                                <div class="input-append date reset-m-btm" id="end_date_add" data-date="" data-date-format="dd/mm/yyyy">
+                                    <input class="date-appear" size="16" type="text" placeholder="dd/mm/yyyy" readonly />
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Add-Exclusion-->
+    
+	<!--Edit Exclusions-->
+    <div class="modal fade" id="content_edit_exclusions" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">EDIT - EXCLUSION</h4>
+                </div>
+                <div class="modal-body move-manager add-exlusion">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Exclusion Value</span>
+                            </div>
+                            <div class="div-cell right">
+                            	<input type="text" class="form-control mbtm-10 value" placeholder="00" />
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Type</span>
+                            </div>
+                            <div class="div-cell">
+                                <select class="form-control mbtm-10" autocomplete="off">
+                                    <option disabled selected>Phone Number</option>
+                                    <option>0913894823</option>
+                                    <option>0841233232</option>
+                                    <option>1123005223</option>
+                                    <option>0984513123</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Start Date</span>
+                            </div>
+                            <div class="div-cell">
+                                <div class="input-append date" id="start_date_edit" data-date="" data-date-format="dd/mm/yyyy">
+                                    <input class="date-appear" size="16" type="text" placeholder="dd/mm/yyyy" readonly />
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">End Date</span>
+                            </div>
+                            <div class="div-cell">
+                                <div class="input-append date reset-m-btm" id="end_date_edit" data-date="" data-date-format="dd/mm/yyyy">
+                                    <input class="date-appear" size="16" type="text" placeholder="dd/mm/yyyy" readonly />
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Edit-Exclusion-->
+    
+	<!--Import Exclusions-->
+	<div class="modal fade" id="content_import_exclusions" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">IMPORT - EXCLUSION</h4>
+                </div>
+                <div class="modal-body move-manager add-exlusion">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Directory</span>
+                            </div>
+                            <div class="div-cell right">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                    <option disabled selected>Directory</option>
+                                    <option>Directory 1</option>
+                                    <option>Directory 2</option>
+                                    <option>Directory 3</option>
+                                    <option>Directory 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">File Name</span>
+                            </div>
+                            <div class="div-cell">
+                                <select class="form-control mbtm-10" autocomplete="off">
+                                    <option disabled selected>File Name</option>
+                                    <option>File 1</option>
+                                    <option>File 2</option>
+                                    <option>File 3</option>
+                                    <option>File 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Format</span>
+                            </div>
+                            <div class="div-cell">
+                               	<div class="radio inline-block">
+                                	<label>
+                                    	<input type="radio" name="ra" value="Delimited Text" />Delimited Text
+                                    </label>
+                                </div>
+                                <div class="inline-block mleft-20">
+                                	<span class="vcenter">Delimiter</span>
+                                    <input type="text" class="form-control reset-form number-box" maxlength="2" placeholder="00" />
+                                </div>
+                                <div class="radio reset-m-t-btm">
+                                	<label>
+                                    	<input type="radio" name="ra" value="Excel" />Excel
+                                    </label>
+                                </div> 
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" value="">
+                                       Ignore Header Row on Import
+                                    </label>
+								</div>
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" value="">
+                                       Ignore Footer Record on Import
+                                    </label>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Import" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Import-Exclusion-->
+
+	<!--Export Exclusions-->
+	<div class="modal fade" id="content_export_exclusions" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">EXPORT - EXCLUSION</h4>
+                </div>
+                <div class="modal-body move-manager add-exlusion">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16">Directory</span>
+                            </div>
+                            <div class="div-cell right">
+                            	<select class="form-control mbtm-10" autocomplete="off">
+                                    <option disabled selected>Directory</option>
+                                    <option>Directory 1</option>
+                                    <option>Directory 2</option>
+                                    <option>Directory 3</option>
+                                    <option>Directory 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">File Name</span>
+                            </div>
+                            <div class="div-cell">
+                                <select class="form-control mbtm-10" autocomplete="off">
+                                    <option disabled selected>File Name</option>
+                                    <option>File 1</option>
+                                    <option>File 2</option>
+                                    <option>File 3</option>
+                                    <option>File 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16">Format</span>
+                            </div>
+                            <div class="div-cell">
+                               	<div class="radio inline-block">
+                                	<label>
+                                    	<input type="radio" name="ra" value="Delimited Text" />Delimited Text
+                                    </label>
+                                </div>
+                                <div class="inline-block mleft-20">
+                                	<span class="vcenter">Delimiter</span>
+                                    <input type="text" class="form-control reset-form number-box" maxlength="2" placeholder="00" />
+                                </div>
+                                <div class="radio reset-m-t-btm">
+                                	<label>
+                                    	<input type="radio" name="ra" value="Excel" />Excel
+                                    </label>
+                                </div> 
+                                <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox" value="">
+                                       Ignore Header on Export
+                                    </label>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Export" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Export-Exclusion-->
+<!---->
+
+<!--Timezone-->
+
+	<!--Add-TimeZone-->
+	<div class="modal fade" id="content_add_timezone" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">ADD - TIME ZONE</h4>
+                </div>
+                <div class="modal-body timezone">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16"> Name </span>	
+                            </div>
+                            <div class="div-cell right">
+                            	<input type="text" class="form-control half-w reset-form mbtm-10" placeholder="Name" />
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16"> Offset </span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control half-w mbtm-10" autocomplete="off">
+                                	<option> +05:00 </option>
+                                    <option> +06:00 </option>
+                                    <option> +07:00 </option>
+                                    <option> +09:00 </option>
+                                    <option> +11:00 </option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16"> Description </span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control reset-form full-w" placeholder="Description" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Add-TimeZone-->
+
+	<!--Edit-TimeZone-->
+	<div class="modal fade" id="content_edit_timezone" tabindex="-1" role="dialog" aria-hidden="true">
+    	<div class="modal-dialog p-top-dialog">
+        	<div class="modal-content">
+            	<div class="modal-header">
+                	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">EDIT - TIME ZONE</h4>
+                </div>
+                <div class="modal-body timezone">
+                	<div class="div-table full-w">
+                    	<div class="div-row">
+                        	<div class="div-cell left">
+                            	<span class="font-16"> Name </span>	
+                            </div>
+                            <div class="div-cell right">
+                            	<input type="text" class="form-control half-w reset-form mbtm-10" placeholder="Name" />
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16"> Offset </span>
+                            </div>
+                            <div class="div-cell">
+                            	<select class="form-control half-w mbtm-10" autocomplete="off">
+                                	<option> +05:00 </option>
+                                    <option> +06:00 </option>
+                                    <option> +07:00 </option>
+                                    <option> +09:00 </option>
+                                    <option> +11:00 </option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="div-row">
+                        	<div class="div-cell">
+                            	<span class="font-16"> Description </span>
+                            </div>
+                            <div class="div-cell">
+                            	<input type="text" class="form-control reset-form full-w" placeholder="Description" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer reset-m-top">
+                	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="button" class="btn btn-primary" value="Save" />
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--End of Edit-TimeZone-->
+<!---->
+</div>
+
+<script type="text/javascript">	
+	
+	var FileObj=function(name,directory,size,mtime){
+		this.name=name;
+		this.directory=directory;
+		this.size=size;
+		this.mtime=mtime
+	};
+
+	function deletefile(path){
+				var dat={};
+				dat['file']=path;
+				$.ajax({			
+				url: "http://localhost:8888/delfile",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();												
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+				});
+	};
+
+	$("#FileManager #download_btn").click(function(){
+		if($("input[name='cb']").filter(":checked").length!==0)
+		{
+		$("input[name='cb']").each(function(){
+			if(this.checked===true && this.id!=='cb_all'){
+				var tmp=datatbl[this.id];										
+				var path=tmp.directory+tmp.name;
+				window.open("http://localhost:8888/download?path="+path);									
+			}
+		});
+		}else{
+			alert('No file has been selected for this operation. You must select a file before using this option');
+			return false;
+		};
+		return false;
+	});
+	
+	$("#FileManager #delete_btn").click(function(){
+		if(confirm('Are you sure want to delete ?')){
+		$("input[name='cb']").each(function(){
+			if(this.checked===true && this.id!=='cb_all'){
+				var tmp=datatbl[this.id];										
+				var path=tmp.directory+tmp.name;
+				deletefile(path);									
+			}
+		});
+		}
+		return false;
+	});
+
+	$("#FileManager #move_btn").click(function(){	
+		if($("input[name='cb']").filter(":checked").length===1)
+		{
+			var obj=$("input[name='cb']").filter(":checked");			
+			var tmp=datatbl[obj[0].id];				
+			var path=tmp.directory+tmp.name;
+			$("#content_move_manager #original_dir").empty().text(path);							
+			return true;
+		}else{
+			alert('Please choose only one file !');
+			return false;
+		}
+		
+		return false;
+	});
+	
+	$("#content_move_manager #move_btn").click(function(){
+				
+				var dat={};
+				var path=$("#content_move_manager #original_dir").text();
+				dat['srcpath']=path
+				dat['despath']=$('#content_move_manager select').val()+'/'+path.substring(path.lastIndexOf('/') + 1);				
+				$.ajax({			
+				url: "http://localhost:8888/movefile",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_move_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+				});
+	});
+	
+	$("#content_add_manager #adddir_btn").click(function(){
+				
+				var dat={};
+				dat['dir']=$('#content_add_manager select').val()+'/'+$("input#dirname_txt").val();
+				$.ajax({			
+				url: "http://localhost:8888/adddir",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_add_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+				});
+	});
+	
+	$("#content_del_manager #deldir_btn").click(function(){				
+				var dat={};
+				dat['dir']=$('#content_del_manager select').val();
+				$.ajax({			
+				url: "http://localhost:8888/deldir",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {				
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_del_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	            									
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+			});
+	});
+	
+	function LoadPage(){
+	$.ajax({			
+		    url: "http://localhost:8888/getInfo",		
+		    method:"POST",
+		    cache: false,
+		    dataType:"json",			
+		    success: function(data) {
+				datatbl=[];
+				$("#FileManager #table-manager tbody").empty();
+				for(var i=0;i<data.length;i++){
+	    		tmp=jQuery.parseJSON(data[i]);							
+					$.each(tmp, function(index, value) { 
+					var Obj,name,dic,size,mtime;
+					$.each(value,function(ix,val){
+												
+						if(ix==='filename'){
+							name=val;
+							
+						}
+						
+						if(ix==='directory'){
+							dic=val;
+							
+						}
+						
+						if(ix==='size'){
+							size=val;
+							
+						}
+
+						if(ix==='mtime'){
+						
+							mtime=val;		
+							Obj=new FileObj(name,dic,size,mtime);							
+							datatbl.push(Obj);
+							
+						}
+						
+					});
+					});
+				
+				}				
+				//data.length < record each page lead to not done the loop
+				var loop= data.length < recordEachPage ? data.length : recordEachPage;
+				for(var i=0;i<loop;i++){						
+					$("#FileManager #table-manager tbody").append("<tr><td><input type=\"checkbox\" name=\"cb\" id=\""+i+"\"/></td><td>"+datatbl[i].directory+"</td><td>"+datatbl[i].name+"</td><td>"+parseFloat(((datatbl[i].size/1024)/1024).toFixed(2))+" Mb</td><td>"+datatbl[i].mtime+"</td></tr>");									
+				}
+				
+				
+		    },			
+		    error: function(jqXHR, textStatus, errorThrown) {	            	
+	    		alert('status error ' + textStatus + " " + errorThrown);
+		    }
+		}).done(function(){				
+				paginate();
+		});
+		
+	$.ajax({			
+		    url: "http://localhost:8888/getDir",		
+		    method:"POST",
+		    cache: false,
+		    dataType:"json",
+		    success: function(data) {
+				optionsAsString="";	
+				optionsAsString += "<option selected=\"selected\" disabled=\"disabled\">Select a directory to delete</option>";
+				
+				for(var i=0;i<data.length;i++){	    	
+					optionsAsString += "<option value='" + data[i] + "'>" + data[i] + "</option>";
+				}				
+				var adddiroption=optionsAsString+"<option value='root'>root</option>";
+				$("#content_add_manager .form-control").empty().append(adddiroption);
+				$("#content_del_manager .form-control").empty().append(optionsAsString);
+				$("#content_move_manager .form-control").empty().append(adddiroption);
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {	            	
+	    		alert('status error ' + textStatus + " " + errorThrown);
+		    }
+	});
+	$("#cb_all").prop('checked', false);
+	}
+	
+	function check(adata,size){
+		$.ajax({			
+		    url: "http://localhost:8888/check",		
+		    method:"POST",
+		    cache: false,
+		    dataType:"text",
+		    success: function(data) {
+				//alert('success '+data);
+				if(size<parseInt(data))
+				{
+					alert('available '+data);
+					adata.submit();
+				}
+				else
+				{
+					alert('There is insufficient space available to upload the files you have selected. Limitation is 10Mb for each tenancy !!');
+				}
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {	            	
+	    		alert('status error ' + textStatus + " " + errorThrown);
+		    }
+		});
+	};
+
+	$("#fileupload").fileupload({
+				  dataType:"json",	  
+				  
+				  done:function(e,data){
+					  
+					  //$.each(data.files, function(index, value) { 	    	
+ 			  			//  $.each(value,function(ix,val){
+			  				//$('#progress').append('<p>'+ix+'  -  '+ val +'</p>');
+							//if(ix==='name'){
+								//counter++;			
+								//if(counter%2==0){
+									//style='row';
+								//}else{
+									//style='row bg-blue';
+								//}								
+							  //$("#File-Manager #table").append("<div class=\""+style+"\"><div class=\"cell default-height text-center vcenter firstcell\"><input name=\"cb1\" type=\"checkbox\" />  </div><div class=\"cell left-border default-height vcenter secondcell\"><span class=\"marginleft-10\"> folder/</span></div><div class=\"cell left-border default-height vcenter thirdcell\"><span class=\"marginleft-10\"> "+val+" </span></div><div class=\"cell left-border default-height vcenter fourthcell\"><span class=\"marginleft-10\"> "+parseFloat(((data.total/1024)/1024).toFixed(2))+" Mbytes </span></div><div class=\"cell left-border default-height vcenter fithcell\"><span class=\"marginleft-10\"> "+moment(new Date()).format("YYYY-MM-DD, hh:mm:ss a")+"</span> </div></div>");
+							//}
+			  			  //});
+			    	  //});
+					//window.location.reload();  
+					LoadPage();
+				  },
+				  
+				  progressall: function (e, data) {
+				        var progress = parseInt(data.loaded / data.total * 100, 10);
+				        //$('#progress .bar').append('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+				        //$('#progress').html('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+				    },
+				    
+				  add: function(e,data){
+					  //$('#status').html('<p id="up">Uploading ... </p>');
+					  //data.submit();					  				
+					  $.each(data.files, function(index, value) {
+					  $.each(value,function(ix,val){
+ 			  				if(ix==='size'){
+								check(data,val);
+							}
+						});
+					  })
+					  
+				  },
+				    
+				  error: function(jqXHR, textStatus, errorThrown) {
+				        alert('get response error ' + textStatus + " " + errorThrown);
+				        started=0;
+				  } 
+		
+	});
+	
+	LoadPage();
+	
+	function paginate(){
+	/*Demo Pagination*/
+	$('#pg_manager').bootpag({
+		total: datatbl.length%recordEachPage!==0 ? (datatbl.length/recordEachPage)+1 : datatbl.length/recordEachPage,
+		page: 1,
+		maxVisible: 5
+	}).on("page", function(even, num) {
+		//switch (num) {
+			//case 1:
+				//$('#table-manager').html("<table class='table table-striped reset-m-btm'><thead><th><input id='cb_all' type='checkbox' name='cb' /></th><th> Directory </th><th> File Name </th><th> Size </th><th> Date </th></thead><tbody><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 1.3 Mb </td><td> 12/12/2012 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 2 </td><td> List File Name 2.txt  </td><td> 2.3 Mb </td><td> 02/1/2012 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 3 </td><td> List File Name 3.txt  </td><td> 1.9 Mb </td><td> 10/07/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 4.1 Kb </td><td> 06/06/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 3.7 Mb </td><td> 27/05/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 5.6 Mb </td><td> 02/04/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 30.83 Kb </td><td> 01/04/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 540.0 Kb </td><td> 25/12/2010 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 2.6 Mb </td><td> 21/12/2010 </td></tr></tbody></table>");
+			//break;
+			
+		//	case 2:
+		//		$('#table-manager').html("String HTML");	
+		//		break;
+				
+		//	default:
+		//		$('#table-manager').html("Pagess" + num);
+		//		break;
+		//}
+		/*Code ajax here to decide the paging of content*/
+		$("#cb_all").prop('checked', false);
+		var crr=(num-1)*recordEachPage;
+		$("#FileManager #table-manager tbody").empty();
+		for(var i=0;i<recordEachPage;i++){				
+				crr++;
+				if(crr<=datatbl.length){
+					var tmp=datatbl[crr-1];																							
+					$("#FileManager #table-manager tbody").append("<tr><td><input type=\"checkbox\" name=\"cb\" id=\""+(crr-1)+"\"/></td><td>"+tmp.directory+"</td><td>"+tmp.name+"</td><td>"+parseFloat(((tmp.size/1024)/1024).toFixed(2))+" Mb</td><td>"+tmp.mtime+"</td></tr>");					
+				}
+			
+		}
+			
+	});
+	/**/
+	}
+	
+</script>
+</body>
+</html>

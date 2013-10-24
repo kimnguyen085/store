@@ -1,0 +1,366 @@
+<script type="text/javascript">	
+	var FileObj=function(){
+		
+	};
+
+	function deletefile(path){
+				var dat={};
+				dat['file']=path;
+				$.ajax({			
+				url: "http://localhost:8888/delfile",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();												
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+				});
+	};
+
+	$("#FileManager #delete_btn").click(function(){
+		if(confirm('Are you sure want to delete ?')){
+		$("input[name='cb']").each(function(){
+			if(this.checked===true && this.id!=='cb_all'){
+				var tmp=jQuery.parseJSON(datatbl[this.id]);
+					$.each(tmp, function(index, value) { 
+						var name,dic;
+						$.each(value,function(ix,val){
+							if(ix==='filename'){
+								name=val;
+							
+							}
+							
+							if(ix==='directory'){
+								dic=val;
+								var path=dic+name;
+								deletefile(path);
+							}
+														
+						});
+					});
+				
+			}
+		});
+		}
+		return false;
+	});
+
+	$("#FileManager #move_btn").click(function(){	
+		if($("input[name='cb']").filter(":checked").length===1)
+		{
+			var obj=$("input[name='cb']").filter(":checked");			
+			var tmp=jQuery.parseJSON(datatbl[obj[0].id]);
+					$.each(tmp, function(index, value) { 
+						var name,dic;
+						$.each(value,function(ix,val){
+							if(ix==='filename'){
+								name=val;
+							
+							}
+							
+							if(ix==='directory'){
+								dic=val;
+								var path=dic+name;
+								$("#content_move_manager #original_dir").empty().text(path);
+							}
+														
+						});
+					});
+			
+			return true;
+		}else{
+			alert('Please choose only one file !');
+			return false;
+		}
+		
+		return false;
+	});
+	
+	$("#content_move_manager #move_btn").click(function(){
+				
+				var dat={};
+				dat['srcpath']=$("#content_move_manager #original_dir").text();
+				//dat['despath']=$('#content_add_manager select').val()+'/'+$("input#dirname_txt").val();
+				$.ajax({			
+				url: "http://localhost:8888/adddir",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_add_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+				});
+	});
+	
+	$("#content_add_manager #adddir_btn").click(function(){
+				
+				var dat={};
+				dat['dir']=$('#content_add_manager select').val()+'/'+$("input#dirname_txt").val();
+				$.ajax({			
+				url: "http://localhost:8888/adddir",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_add_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+				});
+	});
+	
+	$("#content_del_manager #deldir_btn").click(function(){				
+				var dat={};
+				dat['dir']=$('#content_del_manager select').val();
+				$.ajax({			
+				url: "http://localhost:8888/deldir",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {				
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_del_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	            									
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+			});
+	});
+	
+	function LoadPage(){
+	$.ajax({			
+		    url: "http://localhost:8888/getInfo",		
+		    method:"POST",
+		    cache: false,
+		    dataType:"json",			
+		    success: function(data) {
+				$("#FileManager #table-manager tbody").empty();
+				datatbl=data;
+				//data.length < record each page lead to not done the loop
+				var loop= data.length < recordEachPage ? data.length : recordEachPage;
+				for(var i=0;i<loop;i++){
+	    		tmp=jQuery.parseJSON(data[i]);
+				alert(tmp.filename);
+					$.each(tmp, function(index, value) { 
+					var name,dic,size,mtime;
+					$.each(value,function(ix,val){
+												
+						if(ix==='filename'){
+							name=val;
+							
+						}
+						
+						if(ix==='directory'){
+							dic=val;
+							
+						}
+						
+						if(ix==='size'){
+							size=val;
+							
+						}
+
+						if(ix==='mtime'){
+							mtime=val;																				
+							$("#FileManager #table-manager tbody").append("<tr><td><input type=\"checkbox\" name=\"cb\" id=\""+i+"\"/></td><td>"+dic+"</td><td>"+name+"</td><td>"+parseFloat(((size/1024)/1024).toFixed(2))+" Mb</td><td>"+mtime+"</td></tr>");
+						}
+						
+					});
+					});
+				
+				}
+				
+				
+		    },			
+		    error: function(jqXHR, textStatus, errorThrown) {	            	
+	    		alert('status error ' + textStatus + " " + errorThrown);
+		    }
+		}).done(function(){				
+				paginate();
+		});
+		
+	$.ajax({			
+		    url: "http://localhost:8888/getDir",		
+		    method:"POST",
+		    cache: false,
+		    dataType:"json",
+		    success: function(data) {
+				optionsAsString="";	
+				optionsAsString += "<option selected=\"selected\" disabled=\"disabled\">Select a directory to delete</option>";
+				
+				for(var i=0;i<data.length;i++){	    	
+					optionsAsString += "<option value='" + data[i] + "'>" + data[i] + "</option>";
+				}				
+				var adddiroption=optionsAsString+"<option value='root'>root</option>";
+				$("#content_add_manager .form-control").empty().append(adddiroption);
+				$("#content_del_manager .form-control").empty().append(optionsAsString);
+				$("#content_move_manager .form-control").empty().append(adddiroption);
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {	            	
+	    		alert('status error ' + textStatus + " " + errorThrown);
+		    }
+	});
+	$("#cb_all").prop('checked', false);
+	}
+	
+	function check(adata,size){
+		$.ajax({			
+		    url: "http://localhost:8888/check",		
+		    method:"POST",
+		    cache: false,
+		    dataType:"text",
+		    success: function(data) {
+				//alert('success '+data);
+				if(size<parseInt(data))
+				{
+					alert('available '+data);
+					adata.submit();
+				}
+				else
+				{
+					alert('There is insufficient space available to upload the files you have selected. Limitation is 10Mb for each tenancy !!');
+				}
+		    },
+		    error: function(jqXHR, textStatus, errorThrown) {	            	
+	    		alert('status error ' + textStatus + " " + errorThrown);
+		    }
+		});
+	};
+
+	$("#fileupload").fileupload({
+				  dataType:"json",	  
+				  
+				  done:function(e,data){
+					  
+					  //$.each(data.files, function(index, value) { 	    	
+ 			  			//  $.each(value,function(ix,val){
+			  				//$('#progress').append('<p>'+ix+'  -  '+ val +'</p>');
+							//if(ix==='name'){
+								//counter++;			
+								//if(counter%2==0){
+									//style='row';
+								//}else{
+									//style='row bg-blue';
+								//}								
+							  //$("#File-Manager #table").append("<div class=\""+style+"\"><div class=\"cell default-height text-center vcenter firstcell\"><input name=\"cb1\" type=\"checkbox\" />  </div><div class=\"cell left-border default-height vcenter secondcell\"><span class=\"marginleft-10\"> folder/</span></div><div class=\"cell left-border default-height vcenter thirdcell\"><span class=\"marginleft-10\"> "+val+" </span></div><div class=\"cell left-border default-height vcenter fourthcell\"><span class=\"marginleft-10\"> "+parseFloat(((data.total/1024)/1024).toFixed(2))+" Mbytes </span></div><div class=\"cell left-border default-height vcenter fithcell\"><span class=\"marginleft-10\"> "+moment(new Date()).format("YYYY-MM-DD, hh:mm:ss a")+"</span> </div></div>");
+							//}
+			  			  //});
+			    	  //});
+					//window.location.reload();  
+					LoadPage();
+				  },
+				  
+				  progressall: function (e, data) {
+				        var progress = parseInt(data.loaded / data.total * 100, 10);
+				        //$('#progress .bar').append('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+				        //$('#progress').html('<p>'+progress+'% '+ parseInt(data.bitrate/1024,10) +'Kb</p>');
+				    },
+				    
+				  add: function(e,data){
+					  //$('#status').html('<p id="up">Uploading ... </p>');
+					  //data.submit();					  				
+					  $.each(data.files, function(index, value) {
+					  $.each(value,function(ix,val){
+ 			  				if(ix==='size'){
+								check(data,val);
+							}
+						});
+					  })
+					  
+				  },
+				    
+				  error: function(jqXHR, textStatus, errorThrown) {
+				        alert('get response error ' + textStatus + " " + errorThrown);
+				        started=0;
+				  } 
+		
+	});
+	
+	LoadPage();
+	
+	function paginate(){
+	/*Demo Pagination*/
+	$('#pg_manager').bootpag({
+		total: datatbl.length%recordEachPage!==0 ? (datatbl.length/recordEachPage)+1 : datatbl.length/recordEachPage,
+		page: 1,
+		maxVisible: 5
+	}).on("page", function(even, num) {
+		//switch (num) {
+			//case 1:
+				//$('#table-manager').html("<table class='table table-striped reset-m-btm'><thead><th><input id='cb_all' type='checkbox' name='cb' /></th><th> Directory </th><th> File Name </th><th> Size </th><th> Date </th></thead><tbody><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 1.3 Mb </td><td> 12/12/2012 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 2 </td><td> List File Name 2.txt  </td><td> 2.3 Mb </td><td> 02/1/2012 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 3 </td><td> List File Name 3.txt  </td><td> 1.9 Mb </td><td> 10/07/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 4.1 Kb </td><td> 06/06/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 3.7 Mb </td><td> 27/05/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 5.6 Mb </td><td> 02/04/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 30.83 Kb </td><td> 01/04/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 540.0 Kb </td><td> 25/12/2010 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 2.6 Mb </td><td> 21/12/2010 </td></tr></tbody></table>");
+			//break;
+			
+		//	case 2:
+		//		$('#table-manager').html("String HTML");	
+		//		break;
+				
+		//	default:
+		//		$('#table-manager').html("Pagess" + num);
+		//		break;
+		//}
+		/*Code ajax here to decide the paging of content*/
+		$("#cb_all").prop('checked', false);
+		var crr=(num-1)*recordEachPage;
+		$("#FileManager #table-manager tbody").empty();
+		for(var i=0;i<recordEachPage;i++){				
+				crr++;
+				if(crr<=datatbl.length){
+					var tmp=jQuery.parseJSON(datatbl[crr-1]);
+					$.each(tmp, function(index, value) { 
+						var name,dic,size,mtime;
+						$.each(value,function(ix,val){
+							if(ix==='filename'){
+							name=val;
+							
+							}
+							
+							if(ix==='directory'){
+								dic=val;
+								
+							}
+							
+							if(ix==='size'){
+								size=val;
+								
+							}
+
+							if(ix==='mtime'){
+								mtime=val;																				
+								$("#FileManager #table-manager tbody").append("<tr><td><input type=\"checkbox\" name=\"cb\" id=\""+crr+"\"/></td><td>"+dic+"</td><td>"+name+"</td><td>"+parseFloat(((size/1024)/1024).toFixed(2))+" Mb</td><td>"+mtime+"</td></tr>");
+							}
+						});
+					});
+				}
+			
+		}
+			
+	});
+	/**/
+	}
+	
+</script>
