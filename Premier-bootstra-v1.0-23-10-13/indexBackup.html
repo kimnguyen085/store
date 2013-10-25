@@ -96,10 +96,10 @@
                             </span>
                             <span class="mleft-15">
                                 <a id="move_btn" data-toggle="modal" href="#content_move_manager" class="btn btn-primary"> Move </a>
-                                <a data-toggle="modal" href="#content_copy_manager" class="btn btn-primary"> Copy </a>
+                                <a id="copy_btn" data-toggle="modal" href="#content_copy_manager" class="btn btn-primary"> Copy </a>
                                 <a data-toggle="modal" href="#content_view_manager" class="btn btn-primary"> View </a>
                                 <a data-toggle="modal" href="#content_edit_manager" type="button" class="btn btn-primary"> Edit </a>
-                                <a data-toggle="modal" href="#content_rename_manager" class="btn btn-primary"> Rename </a>
+                                <a id="rename_btn" data-toggle="modal" href="#content_rename_manager" class="btn btn-primary"> Rename </a>
                                 <a id="delete_btn" href="" class="btn btn-warning"> Delete </a>
                             </span>
                         </div>
@@ -1028,7 +1028,7 @@
                 </div>
                 <div class="modal-footer reset-m-top">
                 	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
-                    <input type="button" class="btn btn-primary" value="OK" />
+                    <input id="copy_btn" type="button" class="btn btn-primary" value="OK" />
                 </div>
             </div>
         </div>
@@ -1091,7 +1091,7 @@
                 </div>
                 <div class="modal-footer reset-m-top">
                 	<input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
-                    <input type="button" class="btn btn-primary" value="OK" />
+                    <input id="rename_btn" type="button" class="btn btn-primary" value="OK" />
                 </div>
             </div>
         </div>
@@ -3266,7 +3266,84 @@
 		return false;
 	});
 	
+	$("#content_copy_manager #copy_btn").click(function(){
+		var obj=$("input[name='cb']").filter(":checked");			
+		var tmp=datatbl[obj[0].id];				
+		var path=tmp.directory+tmp.name;
+		var dat={};		
+		dat['srcpath']=path;		
+		dat['despath']=tmp.directory+$("#content_copy_manager #name").val();				
+		
+		$.ajax({			
+				url: "http://localhost:8888/copyfile",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_copy_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+		});
+	});
+	
+	$("#FileManager #copy_btn").click(function(){
+		if($("input[name='cb']").filter(":checked").length===1)
+		{			
+			return true;		
+		}else{
+			alert('Please choose only one file !');
+			return false;
+		}
+	});
+	
+	$("#content_rename_manager #rename_btn").click(function(){
+		var obj=$("input[name='cb']").filter(":checked");			
+		var tmp=datatbl[obj[0].id];				
+		var path=tmp.directory+tmp.name;
+		var dat={};		
+		dat['srcpath']=path;		
+		dat['despath']=tmp.directory+$("#content_rename_manager #name").val();				
+		
+		$.ajax({			
+				url: "http://localhost:8888/movefile",		
+				method:"POST",
+				cache: false,
+				data: dat,
+				dataType:"json",
+				success: function(data) {
+					if(data.success==='true'){
+						LoadPage();
+						$("#content_rename_manager").modal('hide');
+					}
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) {	 					
+					alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
+				}
+		});
+	});
+	
+	$("#FileManager #rename_btn").click(function(){
+		if($("input[name='cb']").filter(":checked").length===1)
+		{			
+			//$("#content_move_manager #original_dir").empty().text(path);	
+				//#content_rename_manager #name rename_btn
+			return true;		
+		}else{
+			alert('Please choose only one file !');
+			return false;
+		}
+	});
+	
 	$("#FileManager #delete_btn").click(function(){
+		
 		if(confirm('Are you sure want to delete ?')){
 		$("input[name='cb']").each(function(){
 			if(this.checked===true && this.id!=='cb_all'){
@@ -3277,6 +3354,7 @@
 		});
 		}
 		return false;
+		
 	});
 
 	$("#FileManager #move_btn").click(function(){	
@@ -3416,7 +3494,7 @@
 				
 		    },			
 		    error: function(jqXHR, textStatus, errorThrown) {	            	
-	    		alert('status error ' + textStatus + " " + errorThrown);
+	    		alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
 		    }
 		}).done(function(){				
 				paginate();
@@ -3440,7 +3518,7 @@
 				$("#content_move_manager .form-control").empty().append(adddiroption);
 		    },
 		    error: function(jqXHR, textStatus, errorThrown) {	            	
-	    		alert('status error ' + textStatus + " " + errorThrown);
+	    		alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
 		    }
 	});
 	$("#cb_all").prop('checked', false);
@@ -3465,7 +3543,7 @@
 				}
 		    },
 		    error: function(jqXHR, textStatus, errorThrown) {	            	
-	    		alert('status error ' + textStatus + " " + errorThrown);
+	    		alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
 		    }
 		});
 	};
@@ -3513,7 +3591,7 @@
 				  },
 				    
 				  error: function(jqXHR, textStatus, errorThrown) {
-				        alert('get response error ' + textStatus + " " + errorThrown);
+				        alert('Error Status: ' + errorThrown+'\nError Message: '+jqXHR.responseText);
 				        started=0;
 				  } 
 		
@@ -3528,20 +3606,7 @@
 		page: 1,
 		maxVisible: 5
 	}).on("page", function(even, num) {
-		//switch (num) {
-			//case 1:
-				//$('#table-manager').html("<table class='table table-striped reset-m-btm'><thead><th><input id='cb_all' type='checkbox' name='cb' /></th><th> Directory </th><th> File Name </th><th> Size </th><th> Date </th></thead><tbody><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 1.3 Mb </td><td> 12/12/2012 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 2 </td><td> List File Name 2.txt  </td><td> 2.3 Mb </td><td> 02/1/2012 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 3 </td><td> List File Name 3.txt  </td><td> 1.9 Mb </td><td> 10/07/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 4.1 Kb </td><td> 06/06/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /></td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 3.7 Mb </td><td> 27/05/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 5.6 Mb </td><td> 02/04/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 30.83 Kb </td><td> 01/04/2011 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 540.0 Kb </td><td> 25/12/2010 </td></tr><tr><td> <input type='checkbox' name='cb' /> </td><td> Directory 1 </td><td> List File Name 1.txt  </td><td> 2.6 Mb </td><td> 21/12/2010 </td></tr></tbody></table>");
-			//break;
-			
-		//	case 2:
-		//		$('#table-manager').html("String HTML");	
-		//		break;
-				
-		//	default:
-		//		$('#table-manager').html("Pagess" + num);
-		//		break;
-		//}
-		/*Code ajax here to decide the paging of content*/
+
 		$("#cb_all").prop('checked', false);
 		var crr=(num-1)*recordEachPage;
 		$("#FileManager #table-manager tbody").empty();

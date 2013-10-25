@@ -95,7 +95,7 @@
                 options.accessControl.allowHeaders
             );                         
             
-            var handleResult = function (result, redirect) {
+            var handleResult = function (result, redirect,err) {			
                     if (redirect) {
                         res.writeHead(302, {
                             'Location': redirect.replace(
@@ -104,7 +104,9 @@
                             )
                         });
                         res.end();
-                    } else {
+                    } else if(err){						
+						res.status(500).send(err);
+					}else if(err===null){						
                         res.writeHead(200, {
                             'Content-Type': req.headers.accept
                                 .indexOf('application/json') !== -1 ?
@@ -171,8 +173,8 @@
         nodeStatic.Server.prototype.respond
             .call(this, pathname, status, _headers, files, stat, req, res, finish);
     };
-    FileInfo.prototype.validate = function () {
-        if (options.minFileSize && options.minFileSize > this.size) {
+    FileInfo.prototype.validate = function () {			
+        if (options.minFileSize && options.minFileSize > this.size) {			
             this.error = 'File is too small';
         } else if (options.maxFileSize && options.maxFileSize < this.size) {
             this.error = 'File is too big';
@@ -181,13 +183,23 @@
         }
         return !this.error;
     };
-    FileInfo.prototype.safeName = function () {
+    FileInfo.prototype.safeName = function (callback) {				
         // Prevent directory traversal and creating hidden system files:
         this.name = path.basename(this.name).replace(/^\.+/, '');
-        // Prevent overwriting existing files:
-        while (_existsSync(options.uploadDir + '/' + this.name)) {
-            this.name = this.name.replace(nameCountRegexp, nameCountFunc);
-        }
+        // Prevent overwriting existing files:		
+        // while (_existsSync(options.uploadDir + '/' + this.name)) {			
+            // this.name = this.name.replace(nameCountRegexp, nameCountFunc);
+        // }
+		
+		//Throw error if file is existed
+		var fileInfo=this;
+		fs.exists(options.uploadDir + '/' + this.name,function(err){
+			
+			fileInfo.error='File is existed';
+			callback(fileInfo.error);
+		}); 
+			
+		
     };
     FileInfo.prototype.initUrls = function (req) {
         if (!this.error) {
@@ -226,6 +238,7 @@
     };
     UploadHandler.prototype.post = function () {
         var handler = this,
+			error=null,
             form = new formidable.IncomingForm(),
             tmpFiles = [],
             files = [],
@@ -237,36 +250,57 @@
                 if (!counter) {
                     files.forEach(function (fileInfo) {
                         fileInfo.initUrls(handler.req);
-                    });
-                    handler.callback({files: files}, redirect);
+                    });										
+                    handler.callback({files: files}, redirect,error);					
                 }
             };
             
         form.uploadDir = options.tmpDir;
-        form.on('fileBegin', function (name, file) {
+        form.on('fileBegin', function (name, file) {			
             tmpFiles.push(file.path);
-            var fileInfo = new FileInfo(file, handler.req, true);
-            fileInfo.safeName();
+            var fileInfo = new FileInfo(file, handler.req, true);							
+			
+			fs.readdir(options.uploadDir, function(err, list) {		
+			if(err) throw err;  
+			 
+			// list.forEach(function(file) {			 
+				// fs.stat(options.uploadDir+'/'+file, function(err, stat) {
+					// if(!stat.isDirectory()){
+						// if(fileInfo.name===file){
+							// console.log('existed'+'      '+fileInfo.name+'      '+file);
+						// }
+						
+					// }	
+				// });
+			// });
+			
+			});
+			
+            fileInfo.safeName(function(err){
+				if(err){
+					error=err;					
+					//fs.unlink(file.path);
+				}
+			});
             map[path.basename(file.path)] = fileInfo;
-            files.push(fileInfo);
+			files.push(fileInfo);
 
         }).on('field', function (name, value) {
         	console.log('Start of field '+name+':'+value);
             if (name === 'redirect') {
                 redirect = value;
-            }
-            console.log('End of field');
-        }).on('file', function (name, file) {
-        	console.log('Start of file');
+            }            
+        }).on('file', function (name, file) {					
             var fileInfo = map[path.basename(file.path)];
             fileInfo.size = file.size;
             if (!fileInfo.validate()) {
-            	console.log('Inside validate');
-                fs.unlink(file.path);
+            	console.log('Invalid file');
+				console.log(fileInfo.error);
+                fs.unlink(file.path);	
+				error=fileInfo.error;
                 return;
-            }
-            console.log('Before rename');
-            console.log(file.path+' '+options.uploadDir+' '+fileInfo.name);
+            }            
+            //console.log(file.path+' '+options.uploadDir+' '+fileInfo.name);
             fs.renameSync(file.path, options.uploadDir + '/' + fileInfo.name);
             if (options.imageTypes.test(fileInfo.name)) {
             	console.log('Inside image Type');
@@ -281,8 +315,7 @@
                             fileInfo.name
                     }, finish);
                 });
-            }
-            console.log('End of file ');
+            }            
         }).on('aborted', function () {
             tmpFiles.forEach(function (file) {
                 fs.unlink(file);
@@ -500,6 +533,50 @@
 	
 	});
 	
+	app.post('/copyfile', function(req, res){
+	var form=require('formidable');
+	form = new formidable.IncomingForm();
+	var srcpath=null,despath=null;
+	form.on('field', function (name, value) {		
+        if(name==='srcpath') 
+		{
+			srcpath=value;	
+			
+		}
+		
+		if(name==='despath')
+		{
+			despath=value;			
+			
+		}
+			
+		if(srcpath!==null && despath!==null){						
+			if(fs.existsSync(__dirname+'/'+despath)){
+				res.status(500).send('"'+despath+'\" is already existed !');					
+			}
+			else{
+				//fs.createReadStream(srcpath).pipe(fs.createWriteStream(despath));
+				fs.readFile(srcpath,function(err,data){
+					if(!err){
+						fs.writeFile(despath, data,function(err){
+							if(!err){
+								res.writeHead(200, {'Content-Type': 'application/json'});						
+								res.end('{\"success\":\"true\"}');
+							}else if(err.code==='ENOENT'){
+								res.status(500).send("No such file or directory :\""+despath+"\"");
+							}
+						});												
+					}else{
+						res.status(500).send(err);
+					}
+				});
+				
+			}
+		}
+    }).parse(req);
+	
+	});
+	
 	app.post('/movefile', function(req, res){
 	var form=require('formidable');
 	form = new formidable.IncomingForm();
@@ -517,8 +594,11 @@
 			
 		}
 			
-		if(srcpath!==null && despath!==null){
-			console.log(srcpath+'  --------------> '+despath);
+		if(srcpath!==null && despath!==null){						
+			if(fs.existsSync(__dirname+'/'+despath)){
+				res.status(500).send('"'+despath+'\" is already existed !');					
+			}
+			else{
 			fs.rename(srcpath, despath, function(err) {
 				if (!err){				
 					if(srcpath!==despath){
@@ -527,12 +607,14 @@
 							console.log("removed ");						
 						});
 					}
+					console.log(srcpath+'  --------------> '+despath);
 					res.writeHead(200, {'Content-Type': 'application/json'});						
 					res.end('{\"success\":\"true\"}');
 				}else{
 					res.status(500).send('Cannot move file from:\"'+srcpath+'\" to \"'+despath+'\"');					
 				}
 			});
+			}
 		}
     }).parse(req);
 	
