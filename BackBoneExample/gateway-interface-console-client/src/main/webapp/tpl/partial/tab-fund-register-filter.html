@@ -1,0 +1,44 @@
+<table class="filter-table">
+	<tr>
+		<th width="40%"><label for="from"><%= fundServiceAddressLabel %></label></th>
+		<th width="30%"><label for="to"><%= fundNameLabel %></label></th>
+		<th width="30%"><label for="to"><%= abnLabel %></label></th>
+	</tr>
+	<tr>
+		<td valign="middle">
+            <input name="serviceAddressFund" value="" type="text"/>
+		</td>
+		<td valign="middle">
+			<input name="name" value="" type="text"/>
+		</td>
+		<td valign="middle">
+			<input name="abn" value="" type="text"/>
+		</td>
+	</tr>
+	<tr>
+		<th><label for="from"><%= gatewayServiceAddressLabel %></label></th>
+		<th><label for="to"><%= productNameLabel %></label></th>
+		<th><label for="to"><%= usiLabel %></label></th>
+	</tr>
+	<tr>
+		<td valign="middle">
+			<input name="serviceAddressGateway" value="" type="text"/>
+		</td>
+		<td valign="middle">
+			<input name="productName" value="" type="text"/>
+		</td>
+		<td valign="middle">
+			<input name="usi" value="" type="text"/>
+		</td>
+	</tr>
+	<tr>
+	<tr>
+		<td valign="middle" colspan="2" class="inline-elements">&nbsp;
+			<div class="table-length-dropdown-placeholder ui-icon-alt"></div>
+		</td>
+		<td valign="middle" align="right">
+			<button data-type="filter" data-theme="e" data-corners="false" data-inline="true"><%= btnFilter %></button>
+			<button data-type="reset" data-corners="false" data-inline="true"><%= btnClear %></button>
+		</td>
+	</tr>
+</table>

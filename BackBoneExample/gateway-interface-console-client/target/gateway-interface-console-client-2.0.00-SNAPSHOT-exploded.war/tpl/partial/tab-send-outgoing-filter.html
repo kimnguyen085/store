@@ -1,0 +1,83 @@
+<table class="filter-table">
+    <tr>
+        <td width="35%"><label for="tab-outgoing-sender-message-type-filter"><%= messageTypeLabel %></label></td>
+        <td width="35%"><select class="text-size-14" id="tab-outgoing-sender-message-type-filter" name="tab-outgoing-sender-message-type-filter" data-iconshadow="false" data-corners="false" data-shadow="false" data-theme="d"></select></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td width="35%"><label><%= ebMSMessageHeadersLabel %></label></td>
+        <td colspan="2" width="65%"></td>
+    </tr>
+</table>
+
+<table class="filter-table" id="ebmsMessageHeadersTable">
+    <tr>
+        <td><label for="SourceABN"><%= SourceABNLabel %></label></td>
+        <td><input data-mini="true" name="SourceABN" id="SourceABN"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="SourceUniqueSuperannuationIdentifier"><%= SourceUniqueSuperannuationIdentifierLabel %></label></td>
+        <td><input data-mini="true" name="SourceUniqueSuperannuationIdentifier" id="SourceUniqueSuperannuationIdentifier"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="TargetABN"><%= TargetABNLabel %></label></td>
+        <td><input data-mini="true" name="TargetABN" id="TargetABN"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="TargetUniqueSuperannuationIdentifier"><%= TargetUniqueSuperannuationIdentifierLabel %></label></td>
+        <td><input data-mini="true" name="TargetUniqueSuperannuationIdentifier" id="TargetUniqueSuperannuationIdentifier"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="GBSTFundAdministratorId"><%= GBSTFundAdministratorIdLabel %></label></td>
+        <td><input data-mini="true" name="GBSTFundAdministratorId" id="GBSTFundAdministratorId"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="GBSTSourceABN"><%= GBSTSourceABNLabel %></label></td>
+        <td><input data-mini="true" name="GBSTSourceABN" id="GBSTSourceABN"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="GBSTSourceUniqueSuperannuationIdentifier"><%= GBSTSourceUniqueSuperannuationIdentifierLabel %></label></td>
+        <td><input data-mini="true" name="GBSTSourceUniqueSuperannuationIdentifier" id="GBSTSourceUniqueSuperannuationIdentifier"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="JentrataConversationId"><%= JentrataConversationIdLabel %></label></td>
+        <td><input data-mini="true" name="JentrataConversationId" id="JentrataConversationId"/></td>
+        <td width="30%"></td>
+    </tr>
+    <tr>
+        <td><label for="PartId"><%= PartIdLabel %></label></td>
+        <td><input data-mini="true" name="PartId" id="PartId"/></td>
+        <td width="30%"></td>
+    </tr>
+</table>
+
+<table class="filter-table">
+    <tr>
+        <td width="35%"><label for="xbrlTextArea"><%= xbrlLabel %></label></td>
+        <td colspan="2" width="65%"></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <textarea id="xbrlTextArea" name="xbrlTextArea" class="sender-textarea"></textarea>
+        </td>
+    </tr>
+    <tr>
+        <td width="35%"></td>
+        <td width="45%"></td>
+        <td>
+            <table>
+                <tr>
+                    <td align="right"><button id="sender_submit_button" data-type="filter" data-theme="e" data-select-theme="b" data-corners="false" data-inline="true"><%= submitButton %></button></td>
+                    <td align="right"><button id="sender_clear_button" type='button' data-type="filter" data-theme="e" data-select-theme="b" data-corners="false" data-inline="true"><%= clearButton %></button></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>

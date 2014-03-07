@@ -1,0 +1,80 @@
+<table class="filter-table">
+	<tr>
+		<th width="30%"><label for="from"><%= fromLabel %></label></th>
+		<th width="30%"><label for="to"><%= toLabel %></label></th>
+		<th width="15%"><label for="direction"><%= directionLabel %></label></th>
+		<th width="25%"><label for="action"><%= actionLabel %></label></th>
+	</tr>
+
+	<tr>
+		<td valign="middle">
+            <input type="hidden" name="receivedDatetime_type" value="date">
+            <input type="hidden" name="receivedDatetime_pattern" value="dd/MM/yy">
+            <input name="receivedDatetime_startValue" value="<%= fromDateValue %>" type="text" data-role="datebox" data-options='{"mode": "calbox", "calUsePickers": true, "calNoHeader": true, "overrideDateFormat":"%d/%m/%y", "useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000, "themeDateToday": "b"}' />
+            <!--<div class="ui-grid-a grid-55-45">
+	            <div class="ui-block-a">
+					 <input name="receivedDatetime_startValue" value="<%= fromDateValue %>" type="text" data-role="datebox" data-options='{"mode": "calbox", "calUsePickers": true, "calNoHeader": true, "overrideDateFormat":"%d/%m/%y", "useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000}' />
+				</div>
+				<div class="ui-block-b ">
+					<input name="receivedTime_startValue" value="" type="text" data-role="datebox" data-options='{"mode": "timebox", "useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000}' />
+				</div>
+			</div>-->
+		</td>
+		<td valign="middle">
+			<input name="receivedDatetime_endValue" value="<%= toDateValue %>" type="text" data-role="datebox" data-options='{"mode": "calbox", "calUsePickers": true, "calNoHeader": true, "overrideDateFormat":"%d/%m/%y","useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000, "themeDateToday": "b"}' />
+			<!--<div class="ui-grid-a grid-55-45">
+	            <div class="ui-block-a">
+					<input name="receivedDatetime_endValue" value="<%= toDateValue %>" type="text" data-role="datebox" data-options='{"mode": "calbox", "calUsePickers": true, "calNoHeader": true, "overrideDateFormat":"%d/%m/%y","useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000}' />
+				</div>
+				<div class="ui-block-b hidden">
+					<input name="receivedTime_endValue" value="" type="date" data-role="datebox" data-options='{"mode": "timebox", "overridetimeFieldOrder":["h","i","a"], "useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000}' />
+				</div>
+			</div>-->
+		</td>
+		<td valign="middle">
+			<select class="text-size-14" id="tab-messages-direction-filter" name="direction" data-iconshadow="false" data-corners="false" data-shadow="false" data-theme="d"></select>
+		</td>
+		<td valign="middle">
+            <select class="text-size-14" id="tab-messages-type-filter" name="action" data-iconshadow="false" data-corners="false" data-shadow="false" data-theme="d"></select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5">
+			<table class="filter-table">
+				<tr>
+					<th width="50%"><label><%= sourceFundLabel %></label></th>
+					<th width="50%"><label><%= sourceProductLabel %></label></th>
+				</tr>
+				<tr>
+					<td id="message-participant-fund-source-container" valign="middle">
+					</td>
+					<td id="message-participant-product-source-container" valign="middle">
+					</td>
+				</tr>
+				<tr>
+					<th width="50%"><label><%= targetFundLabel %></label></th>
+					<th width="50%"><label><%= targetProductLabel %></label></th>
+				</tr>
+				<tr>
+					<td id="message-participant-fund-target-container" valign="middle">
+					</td>
+					<td id="message-participant-product-target-container" valign="middle">
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="middle" colspan="2" class="inline-elements">&nbsp;
+			<div class="table-length-dropdown-placeholder ui-icon-alt"></div>
+		</td>
+		<td valign="middle" class="inline-elements">
+			<input type="checkbox" id="check-error-only" name="showErrorOnly" data-role="none" />
+			<label class="content-text" for="check-error-only"><%= textCheck %></label>
+		</td>
+		<td valign="middle" align="right" colspan="2">
+			<button data-type="filter" data-theme="e" data-select-theme="b" data-corners="false" data-inline="true"><%= btnFilter %></button>
+			<button data-type="reset" data-corners="false" data-inline="true"><%= btnClear %></button>
+		</td>
+	</tr>
+</table>
