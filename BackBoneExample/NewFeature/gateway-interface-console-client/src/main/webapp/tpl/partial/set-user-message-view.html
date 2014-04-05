@@ -1,0 +1,19 @@
+<div class="login-form-wrapper">
+	<div class="login-form-row">
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+		    </div>
+		    <div class="ui-block-b" style="width: 25%">
+		    		<div class="pading-bottom-15">
+		    			<label class="title-text-size-16 text-dark-blue"><b>Set User Message View</b></label>
+		    		</div>
+			    		<label  for="username"><%= usernameLabel %></label>
+			    		<input type="text" name="username" id="username" class="required" data-theme="d" data-corners="false" data-inline="true"/>
+			    		<label for="messageview"><%= messageviewLabel %></label>
+			    		<select class="text-size-14" id="messages-view-type" name="viewtype" data-iconshadow="false" data-corners="false" data-shadow="false" data-theme="d"></select>
+			    		<button data-theme="e" id="setuserview"  type="submit" data-corners="false" data-inline="true"><%= btnSet %></button>
+		    	<div id="error" class="hidden text-dark-blue title-text" data-role="fieldcontain">Error Text here</div>
+		    </div>
+		</div>
+	</div>
+</div>

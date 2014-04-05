@@ -1,0 +1,577 @@
+.ui-header {
+	height: 40px;
+}
+
+/* second fixed header */
+.ui-header + .ui-header {
+	top: 40px;
+}
+
+/* third fixed header */
+.ui-header + .ui-header + .ui-header {
+	top: 80px;
+}
+
+.ui-footer {
+	height: 40px;
+}
+
+/* button text */
+.ui-btn-text{
+	font-size: 14px;
+	font-weight: normal;
+}
+
+/* login header */
+.ui-header.ui-bar-f > .ui-bar-e {
+	height: 40px;
+	width: 14em !important;
+	display: inline-block;
+}
+
+.ui-header.ui-bar-f > label {
+	display: inline-block;
+}
+/* generic header title */
+.ui-bar-e h3,
+.ui-bar-e > h3.ui-title {
+	text-align: left;
+ 	margin: 0.6em 0 0 0.2em;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.ui-bar-e h3 > span {
+	font-weight: bold;
+}
+
+.ui-bar-e .ui-select,
+.ui-bar-f .ui-select {
+	display: inline-block;
+}
+
+
+/* blue header link */
+.ui-footer.ui-bar-f a.ui-link {
+    color: #009AD8;
+    font-weight: normal;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.ui-footer.ui-bar-f span {
+    color: #ffffff;
+    font-weight: normal;
+	font-size: 16px;
+	text-decoration: none;
+}
+.ui-footer.ui-bar-f .ui-grid-a {
+	padding: 0.5em 0.5em 0 0;
+}
+
+.ui-footer.ui-bar-f .ui-grid-a > .ui-block-a {
+	width: 14em;
+}
+.ui-footer.ui-bar-f .ui-grid-a > .ui-block-b {
+	width: auto;
+	position: absolute;
+	right: 10px;
+}
+
+.ui-footer.ui-bar-f .ui-grid-solo {
+	padding: 0.5em 0.5em 0 0;
+}
+
+/* quick actions menu */
+
+/* body */
+.ui-content {
+	border: 0;
+}
+
+.ui-content {
+	padding: 10px;
+	-webkit-overflow-scrolling: touch;
+}
+
+/* List view */
+.ui-li.ui-btn-inner,
+.ui-li.ui-li-static {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+/* grid */
+
+.ui-grid-a.grid-7-3 > .ui-block-a {
+	width: 70%;
+	word-wrap: normal;
+}
+
+.ui-grid-a.grid-7-3 > .ui-block-b {
+	width: 30%;
+	word-wrap: normal;
+}
+
+.ui-grid-a.grid-45-55 > .ui-block-a {
+	width: 45%;
+}
+.ui-grid-a.grid-45-55 > .ui-block-b {
+	width: 55%;
+}
+
+/* gril 55-45 */
+.ui-grid-a.grid-55-45 > .ui-block-a {
+	width: 55%;
+	word-wrap: normal;
+}
+.ui-grid-a.grid-55-45> .ui-block-b {
+	width: 45%;
+	word-wrap: normal;
+}
+
+.ui-grid-b.grid-3-3-4 > .ui-block-a,
+.ui-grid-b.grid-3-3-4 > .ui-block-b {
+	width: 30%;
+	word-wrap: normal;
+}
+
+.ui-grid-b.grid-3-3-4 > .ui-block-c {
+	width: 40%;
+	word-wrap: normal;
+}
+
+.ui-grid-c.grid-10-40-10-40 > .ui-block-a,
+.ui-grid-c.grid-10-40-10-40 > .ui-block-c {
+	width: 10%;
+}
+
+.ui-grid-c.grid-10-40-10-40 > .ui-block-b,
+.ui-grid-c.grid-10-40-10-40 > .ui-block-d  {
+	width: 40%;
+}
+
+/* 	Girl 3-7 */
+
+.ui-grid-a.grid-3-7 > .ui-block-a {
+	width: 30%;
+	word-wrap: normal;
+}
+.ui-grid-a.grid-3-7 > .ui-block-b {
+	width: 70%;
+	word-wrap: normal;
+}
+/*Gril 25-20-30-25*/
+.ui-grid-c.grid-25-20-30-25 > .ui-block-a {
+	width: 25%;
+	word-wrap: normal;
+}
+.ui-grid-c.grid-25-20-30-25 > .ui-block-b {
+	width: 20%;
+	word-wrap: normal;
+}
+.ui-grid-c.grid-25-20-30-25 > .ui-block-c {
+	width: 30%;
+	word-wrap: normal;
+}
+.ui-grid-c.grid-25-20-30-25 > .ui-block-d {
+	width: 25%;
+	word-wrap: normal;
+}
+
+.ui-collapsible-set {
+	margin: 0;
+}
+
+/* Accordion View */
+.ui-collapsible-content.ui-body-g,
+.ui-collapsible-content.ui-body-g > .ui-listview:first-child {
+	border: 0;
+}
+
+.ui-collapsible-content.ui-body-g > .ui-listview {
+	padding-top: 5px;
+	padding-bottom: 10px;
+	border-top: 1px dotted;
+}
+
+.ui-collapsible-heading-toggle.ui-btn-up-d {
+	background: rgba(0, 0, 0, 0);
+	/*background: #FFFFFF;*/
+}
+
+.ui-collapsible-heading .section-title{
+	color: #009AD8;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ui-collapsible-content.ui-body-d {
+	border: 1px solid #BBBBBB;
+}
+
+/* panel override */
+@media (min-width:35em){
+	/* persistive panels on wide screen */
+	/* wrap on wide viewports once open */
+	.ui-panel {
+		display: block;
+		top: 0;
+		width: 14em;
+	}
+
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push.ui-panel-content-fixed-toolbar-position-left,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal.ui-panel-content-fixed-toolbar-position-left,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-left,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-left {
+	    margin-right: 14em;
+	}
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push.ui-panel-content-fixed-toolbar-position-right,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal.ui-panel-content-fixed-toolbar-position-right,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right {
+	    margin-left: 14em;
+	}
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-push,
+	.ui-responsive-panel.ui-page-panel-open .ui-panel-content-fixed-toolbar-display-reveal {
+	    width: auto;
+	}
+
+	/* disable "dismiss" on wide viewports */
+	.ui-responsive-panel .ui-panel-dismiss-display-push {
+	    display: none;
+	}
+}
+
+/* left Panel CSS*/
+/*-------*/
+.ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay,
+.ui-panel-animate.ui-panel-position-left.ui-panel-display-push {
+	left: 0;
+	-webkit-transform: translate3d(-21em,0,0);
+	-moz-transform: translate3d(-21em,0,0);
+	transform: translate3d(-21em,0,0);
+}
+
+.ui-panel.ui-body-c {
+	filter: none;
+	background: #F3F3F3;
+}
+
+.ui-panel {
+	border: 0;
+}
+.ui-panel.ui-panel-fixed {
+	position: absolute;
+}
+.ui-panel-inner {
+	padding: 0;
+}
+/* this I considered a hack...*/
+.ui-panel-inner > .ui-header.ui-bar-e,
+.ui-panel-inner > .ui-footer.ui-bar-f {
+	width: 14em;
+	left: 0;
+}
+
+.ui-panel-inner > .ui-listview {
+	margin: 0;
+}
+
+.left-nav > .ui-li.ui-btn-up-d,
+.left-nav > .ui-li.ui-btn-hover-d,
+.left-nav > .ui-li.ui-btn-up-b,
+.left-nav > .ui-li.ui-btn-hover-b {
+	margin: 0;
+	border: 0;
+	padding: 2px 15px;
+}
+
+.left-nav > .ui-li.ui-btn-up-d {
+	background: rgba(0, 0, 0, 0);
+}
+
+.left-nav > .ui-li.ui-btn-hover-d {
+	background: rgba(0, 154, 216, 0.3);
+}
+
+.left-nav > .ui-li.ui-btn-hover-d .ui-btn-inner,
+.left-nav > .ui-li.ui-focus .ui-btn-inner {
+	border: 0;
+}
+
+.left-nav .ui-btn-text a {
+	color: #004D9F;
+	margin-left: 15px;
+}
+
+.left-nav > .ui-li.ui-first-child {
+	background: #009AD8;
+}
+
+.left-nav > .ui-li.ui-first-child a{
+	color: white;
+}
+
+.left-nav span.ui-icon-fo {
+	position: absolute;
+	left: -10px;
+	top: 4px;
+}
+
+.left-nav > .ui-li.selected {
+	background: #004D9F;
+	color: #ffffff;
+}
+
+.left-nav > .ui-li.selected a {
+	color: #ffffff;
+}
+
+.left-nav > .ui-li.selected .ui-icon-blue-dark-arrow-right {
+	border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+}
+
+.left-nav > .ui-li.selected .ui-icon-fo {
+    background-image: url('images/fomobile-icons.white.png');
+}
+
+.left-nav .ui-btn-inner {
+	border: 0;
+}
+
+/* Icon CSS */
+/* Red */
+.ui-icon-red-thick-arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #ee2e30;
+	border-radius: 0px
+}
+.ui-icon-red-thick-arrow-down {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid #ee2e30;
+	border-radius: 0px
+}
+.ui-icon-red-thick-arrow-right {
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid #ee2e30;
+	border-radius: 0px
+}
+.ui-icon-red-thick-arrow-left {
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-right: 8px solid #ee2e30;
+	border-radius: 0px
+}
+.ui-icon-red-cross:before {
+	content: "\2716";
+	font-size: 16px;
+	color: #ee2e30
+}
+
+/* green */
+.ui-icon-green-thick-arrow-up {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid #5dbb46;
+	border-radius: 0px
+}
+.ui-icon-green-thick-arrow-down {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-top: 8px solid #5dbb46;
+	border-radius: 0px
+}
+.ui-icon-green-thick-arrow-right {
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-left: 8px solid #5dbb46;
+	border-radius: 0px
+}
+.ui-icon-green-thick-arrow-left {
+	width: 0;
+	height: 0;
+	border-top: 8px solid transparent;
+	border-bottom: 8px solid transparent;
+	border-right: 8px solid #5dbb46;
+	border-radius: 0px
+
+}
+.ui-icon-green-tick {
+	display:inline-block;
+    width: 6px;
+    height: 11px;
+    border-top: 3px solid #5dbb46;
+    border-left: 3px solid #5dbb46;
+    transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    border-radius: 0px
+}
+/* blue */
+.ui-icon-blue-light-arrow-up {
+	display:inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #0db9fb;
+    border-left: 2px solid #0db9fb;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    border-radius: 0px
+}
+.ui-icon-blue-light-arrow-down {
+	display:inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #0db9fb;
+    border-left: 2px solid #0db9fb;
+    transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    border-radius: 0px;
+
+}
+.ui-icon-blue-light-arrow-left {
+	display:inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #0db9fb;
+    border-left: 2px solid #0db9fb;
+    transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    border-radius: 0px
+}
+.ui-icon-blue-light-arrow-right {
+	display:inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #0db9fb;
+    border-left: 2px solid #0db9fb;
+    transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    border-radius: 0px
+}
+.ui-icon-blue-dark-arrow-right {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #002967;
+    border-left: 2px solid #002967;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+
+}
+
+/* FOMobile icons */
+.ui-icon-fo {
+	height: 30px;
+	width: 30px;
+	display: inline-block;
+	padding: 0 5px;
+	background-image: url('images/fomobile-icons.blue.png');
+	background-repeat: no-repeat;
+}
+
+.ui-icon-fo-client {
+	background-position: 0 0;
+}
+
+.ui-icon-fo-search {
+	background-position: -60px 0;
+}
+
+.ui-icon-fo-settings {
+	background-position: -120px 0;
+}
+
+.ui-icon-fo-templates {
+	background-position: -180px 0;
+}
+
+.ui-icon-fo-clients {
+	background-position: -240px 0;
+}
+
+.ui-icon-fo-market {
+	background-position: -300px 0;
+}
+
+.ui-icon-fo-adviser {
+	background-position: -360px 0;
+}
+
+.ui-icon-fo-tags {
+	background-position: -410px 7px;
+}
+
+.ui-icon-fo-logout {
+	background-position: -480px 0;
+}
+
+.ui-icon-fo-alerts {
+	background-position: -540px 0;
+}
+
+.ui-icon-fo-news {
+	background-position: -600px 0;
+}
+
+.ui-icon-fo-products {
+	background-position: -660px 0;
+}
+
+/* jQuery UI fixes */
+.ui-autocomplete.ui-front {
+	z-index: 1500;
+}
+.ui-autocomplete.ui-menu {
+	background: #004D9F;
+	border-radius: 0 !important;
+}
+.ui-autocomplete.ui-menu li a {
+	color: #ffffff;
+	border-radius: 0 !important;
+}
+
+.ui-autocomplete.ui-menu li a.ui-state-focus{
+	background: #80CCEB;
+}
+
+/* remove shadow icon apply for tab-dedail */
+span.ui-icon.ui-icon-shadow.ui-icon-plus,
+span.ui-icon.ui-icon-shadow.ui-icon-minus{
+	box-shadow: none;
+}

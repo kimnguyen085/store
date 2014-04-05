@@ -1,0 +1,85 @@
+<!--search area for searching by date/dropdowns-->
+<div class="pading-bottom-15">
+<label class="title-text-size-16 text-dark-blue"><%= messageTypeLabel %></label>
+</div>
+<div class="summary-section-filter">
+<table class="filter-table">
+	<tr>
+		<th width="30%"><label for="from"><%= fromLabel %></label></th>
+		<th width="39%"><label for="to"><%= toLabel %></label></th>
+		<th width="40%"><label for="type"><%= typeLabel %></label></th>
+
+	</tr>
+	<tr>
+		<td valign="middle">
+            <input type="hidden" name="date_type" value="date">
+            <input type="hidden" name="date_pattern" value="dd/MM/yy">
+			<input name="date_startValue" value="<%= fromDateValue %>" type="text" data-role="datebox" data-options='{"mode": "calbox", "calUsePickers": true, "calNoHeader": true, "overrideDateFormat":"%d/%m/%y", "overrideSlideFieldOrder":["y","m","d"], "useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000, "themeDateToday": "b"}' />
+		</td>
+		<td valign="middle">
+			<input name="date_endValue" value="<%= toDateValue %>" type="text" data-role="datebox" data-options='{"mode": "calbox", "calUsePickers": true, "calNoHeader": true, "overrideDateFormat":"%d/%m/%y", "overrideSlideFieldOrder":["y","m","d"], "useFocus":true, "useNewStyle":true, "overrideStyleClass": "date-input-small", "zindex": 1000, "themeDateToday": "b"}' />
+		</td>
+		<td valign="middle">
+			<select class="text-size-14" id="tab-daily-summary-type-filter" name="action" data-iconshadow="false" data-corners="false" data-shadow="false" data-theme="d"></select>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<table id="contribution" class="filter-dropdown-table" style="display: none">
+				<tr>
+					<th width="60%"></th>
+					<th width="40%"><label><%= sourceEntityLabel %></label></th>
+				</tr>
+				<tr>
+					<td></td>
+					<td id="daily-summary-source-entity-container" valign="middle">
+
+					</td>
+				</tr>
+				<tr>
+					<th width="60%"><label><%= targetFundLabel %></label></th>
+					<th width="40%"><label><%= targetProductLabel %></label></th>
+				</tr>
+				<tr>
+					<td id="daily-summary-participant-fund-target-container" valign="middle">
+
+					</td>
+					<td id="daily-summary-participant-product-target-container" valign="middle">
+
+					</td>
+				</tr>
+			</table>
+            <table class="id-search-table">
+                <tr>
+                    <th width="30%"></th>
+                    <th width="30%"><label for="ebMSMessageId"><%= ebMSMessageIdLabel %></label></th>
+                    <th width="40%"><label for="conversationId"><%= conversationIdLabel %></label></th>
+                </tr>
+                <tr>
+                    <td width="30%"></td>
+                    <td width="30%"><input data-mini="true" type="search" name="ebmsMessageId" /></td>
+                    <td width="40%"><input data-mini="true" type="search" name="conversationId"/></td>
+                </tr>
+            </table>
+		</td>
+	</tr>
+    <tr>
+        <td colspan="2" valign="middle"></td>
+        <td valign="middle" align="right"><a name="advancedSearchLinkCM" href="javascript:void(0)"><%= advancedSearchLabel %></a></td>
+    </tr>
+
+	<tr>
+		<td valign="middle" colspan="2" class="inline-elements">&nbsp;
+			<div class="table-length-dropdown-placeholder ui-icon-alt"></div>
+		</td>
+		<td valign="middle" align="right">
+			<button id="general_summary_search_button" data-type="filter" data-theme="e" data-select-theme="b" data-corners="false" data-inline="true"><%= btnFilter %></button>
+			<button id="general_summary_reset_button" data-type="reset" data-corners="false" data-inline="true"><%= btnClear %></button>
+		</td>
+	</tr>
+    <tr>
+        <td colspan="2" valign="middle"></td>
+        <td valign="middle" align="right"><a name="hideAdvancedSearchLinkCM" style="display: none" href="javascript:void(0)"><%= hideAdvancedSearchLabel %></a></td>
+    </tr>
+</table>
+</div>

@@ -1,0 +1,3 @@
+Write pages into component
+Ex: administration-pages need to write a View SetUserView as well as handle all related event in that view. Then add to administration-pages.
+Not write all in pages

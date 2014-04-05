@@ -1,0 +1,11 @@
+<div class="title-text text-blue"><%= fileUploadLabel %></div>
+<div class="ui-grid-solo">
+	<div class="ui-block-a inline-elements">
+		<input size="40%" type="text" id="tab-upload-file-name" data-inline="true" readonly="readonly" />
+		<span class="fileinput-button" data-role="button" data-corners="false" data-theme="e" data-inline="true" data data-icon="search">
+			<span><%= btnbrowse %></span>
+			<input type="file" name="files[]" multiple data-role="none"/>
+		</span>
+		<button data-type="upload" data-corners="false" data-theme="e" data-inline="true"><%= btnUpload %></button>
+	</div>
+</div>

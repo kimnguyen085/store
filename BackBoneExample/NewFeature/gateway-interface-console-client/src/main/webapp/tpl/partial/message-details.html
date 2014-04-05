@@ -1,0 +1,44 @@
+<div class="ui-grid-a">
+	<div class="ui-block-a">
+		<div class="title-text-size-16 text-dark-blue pading-bottom-15"><%= ebmsMessagesDetailLabel %></div>
+	</div>
+	<div class="ui-block-b alignment-right">
+		<a href="#" data-role="button" data-inline="true" data-theme="e" data-mini="true" data-corners="false" class="show-raw-message"><%= btnRawMessage %></a>
+	</div>
+</div>
+<div class="hidden raw-message-container"></div>
+<table class="table-style-1">
+	<tr>
+		<td width="15%" class="title-text-size-12"><label><%= ebmsMessageIdLabel %></label></td>
+		<td width="35%"><%= ebmsMessageId %></td>
+		<td width="15%" class="title-text-size-12"><label><%= conversationIdLabel %></label></td>
+		<td width="35%"><%= conversationId %></td>
+	</tr>
+	<tr>
+		<td width="15%" class="title-text-size-12"><label><%= directionLabel %></label></td>
+		<td width="35%"><%= $.i18n.prop('message.info.label.direction.' + direction) %></td>
+		<td width="15%" class="title-text-size-12"><label><%= gatewayMessageIdLabel %></label></td>
+		<td width="35%"><%= messageId %></td>
+
+	</tr>
+	<tr>
+		<td width="15%" class="title-text-size-12"><label><%= typeLabel %></label></td>
+		<td width="35%"><%= messageActionId.name %></td>
+		<td width="15%" class="title-text-size-12"><label><%= receivedLabel %></label></td>
+		<td width="35%"><% if (receivedDatetime != null) {%><%= dateFormat(receivedDatetime, 'dd/MM/yyyy HH:mm:ss') %><%} %></td>
+	</tr>
+	<tr>
+		<td width="15%" class="title-text-size-12"><label><%= statusLabel %></label></td>
+		<td width="35%"><%= status %></td>
+		<td width="15%" class="title-text-size-12"><label><%= deliverLabel %></label></td>
+		<td width="35%"><% if (completedDatetime != null) {%><%= dateFormat(completedDatetime, 'dd/MM/yyyy HH:mm:ss') %><%} %></td>
+
+	</tr>
+	<tr>
+		<td width="15%" class="title-text-size-12"></td>
+		<td width="35%"></td>
+        <td width="15%" class="title-text-size-12"><label><%= submittedUserAccountLabel %></label></td>
+        <td width="35%"><%= submittedUserAccount %></td>
+	</tr>
+</table>
+</br>

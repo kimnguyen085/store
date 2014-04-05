@@ -1,0 +1,22 @@
+<div class="ui-grid-b">
+ <% if (isPartSection) { %>
+<table class="table-style-1" style="width: 100%">
+	<tr>
+		<td width="15%" class="title-text-size-12"><label><%= sourceLabel %></label></td>
+		<td width="35%"><label>Entity: </label> <% if (sourceEntityId) { %><%= sourceEntityId %> <% } %></td>
+        <td width="15%" class="title-text-size-12"><label><%= targetLabel %></label></td>
+		<td width="35%" colspan="3"><label>Name: </label><% if (targetParticipantName) { %><%= targetParticipantName %><% } %><br /><label>Product: </label><% if (targetParticipantProductName) { %><%= targetParticipantProductName %><% } %></td>
+	</tr>
+</table>
+<% } %>
+	<div class="ui-block-a pading-top-20">
+		<div class="title-text-size-16 text-dark-blue"><%= logMessageLable %></div>
+	</div>
+	<div class='ui-block-b'>
+		<div class="table-length-dropdown-placeholder ui-icon-alt"></div>
+	</div>
+	<div class='ui-block-c alignment-right'>
+		<a href="#" data-role="button" data-inline="true" data-theme="e" data-mini="true" data-corners="false"><%= btnShowXBRL%></a>
+	</div>
+</div>
+<br/>
