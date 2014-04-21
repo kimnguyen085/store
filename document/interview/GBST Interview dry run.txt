@@ -1,0 +1,30 @@
+My Name is Nguyen Hoang Kim. I have been in IT industry about 2 years as well as participate in some teams and projects. I am interest in designing, implement enterprise application and want to learn more about them.	I'm Good in ….(major programming languages and techniques)…I also know ….(major techniques..)….don't be too detail as #2
+
+I have worked with Java in 2 years. I also have experience in some Java technologies  like: Hibernate, Spring, GWT, web services(JAX-WS), … For ex, when working on Mobile Access Control project,my role in team is the back-end developer, so I used Hibernate to map the database tables to Objects in Java and use them for some data access like: insert, update, delete. I'm also with using Spring as I have worked with Mr Tin in SuperStream project.	ok
+
+To make sure your code run correctly, you should have some tool to test every unit of your code like method or class. In Java, I recommend using Junit testing framework.
+You can use several api of Junit to test like: assert statement, test with exception or even build a suite	coverage?
+
+Yes I have work on some projects that apply Scrum. In Scrum project, we have a Scrum Master to ensure all the process run smoothly without problem. The basic unit in Scrum is Sprint: a list of work get from product backlog to fill the Sprint. Usually a Sprint take about 3-4 weeks. At the beginning of each Sprint, we have a meeting to plan what to do in Sprint. We also have daily meeting occurs in specific time of everyday to report what we have done yesterday and what to do today. Finally, we have sprint end meeting to review the Sprint (technology, common mistakes, plan to improve). The result of Sprints are name increment. Scum also has a burndown chart to show remaining work in the sprint backlog. Updated every day, it gives a simple view of the sprint progress 	ok
+
+"Customer can see the increment of project and easy to change their requirement whenever they want.
+Enhanced the relationship as well as interaction between customer and development team
+Development team could deliver the product more quickly and reduce the cost of production"	ok
+In Mobile Access Control, I used Jenkin as a CI server to build and test the application. However I'm not involved in Administration, just worked as a developer and ensure that I will never break the build.	A bit on CI purpose: ensure the team are always on the latest source and all failures of automation unit test and build bugs are reported and addressed
+Actually, I do not know about Oracle. However I have used some common databases: MS SQL Server and Postgre	
+No, just the developer role. In MS SQL Server, I used SQL Query Analyser to check the query. This tool allow me to check the performance of query (where take long time to run, which part has problem), quick insert,update, delete rows in table (with Table Window) and even debug the store procedure performance	remove…quick…till…end. Not sure how can you "debug" the procedure "performance" :)
+Not yet. Actually I just used Junit for the testing 	ok
+As I understand, high level document is about the architecture and fundamental diagram of project, low level document is about the technical specifications, features design or something that specific and detail.	ok
+"UML is Unified Model Language is used to model the system. There are three diagrams that I usually used.
+Use case: represent functions or interactions between user and system
+Sequence Diagram: to show an interaction diagram that shows how processes operate with one another and in what order
+Class diagram: diagram that show the relationship, operations and attributes of system objects"	ok
+No	ok
+Not yet. 	ok
+When I worked on SuperStream project that using BackBoneJS to write the front-end. I have no idea about BackBoneJs or anything related to it. But I have to learn and implement it to meet the requirements at the same time. That's quite of stress task because the pressure of deadline. So I manage to ask and learn from someone who has worked with BackBoneJs before and I am able to finish it on time.	Actively get consult from experience people who….
+The first thing a good team needed is goal.  Good team need the same goal to keep them focus on work and know what exactly to do next. Secondly good team also need trust as the most important thing, trust is always needed in relationships and works. If you do not trust your colleagues or your partners, you cannot finish your work.	…clear goal…same direction for all problem solving
+Technical knowledge, Problem solving	
+Jira	I have use jira for most of projects
+First I need to find the owner of document. Then I will raise for them to update the document. In case I am the owner of that document, I would update and public it with team member and related people.	raise the problem to the author; track it as issue on jira (?) and follow it up till it's addressed. Beside, I still keep moving with my own task and revisit it once the document issue is fixed
+
+
